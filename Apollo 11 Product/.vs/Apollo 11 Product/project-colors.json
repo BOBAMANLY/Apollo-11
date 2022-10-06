@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d170bde0-2f01-451a-9bfd-ab0283543107": {
+      "ProjectGuid": "d170bde0-2f01-451a-9bfd-ab0283543107",
+      "DisplayName": "Apollo 11 Product",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
