@@ -20,13 +20,13 @@ private:
         double radians = ((input * (2 * pi)) / 360);
         return radians;
     }
-    int normalize(double input) {
+    double normalize(double input) {
         double pi = 2 * acos(0.0); // Solve PI
-        int norm;
+        double norm;
         if (fmod(input, pi) == 0)
             norm = pi;
         else
-            norm = 360 - input;
+            norm = 360.0 - input;
         return norm;
     }
 
@@ -51,6 +51,7 @@ public:
     }
 };
 
+/***
 int main()
 {
     Angle object;
@@ -68,3 +69,4 @@ int main()
 
     return 0;
 }
+***/

@@ -352,6 +352,7 @@ int test()
  * MAIN
  * Prompt for input, compute new position, and display output
  ****************************************************************/
+ /*
 int main()
 {
     /*
@@ -359,7 +360,7 @@ int main()
     Hard landing	-13.959	10.53	100.0	-45	0
     Crash	-15.000	-35.00	207.77	90	45
     Armstrong is awesome!	-10.000	10.00	56.11	-42.185	0
-    */
+    
 
     // Test function
     //test();
@@ -412,7 +413,7 @@ int main()
         cout << "\tNew position:" << count << "s  (" << x << ", " << y << ")m\n";
         cout << "\tNew velocity:" << count << "s  (" << dx << ", " << dy << ")m/s\n";
         cout << "\tTotal velocity:" << count << "s  " << v << "m / s\n\n";
-        */
+        
         // New Output
         cout << count << "s" << " (X,Y): (" << x << ", " << y << ")m ";
         cout << "(DX, DY): (" << dx << ", " << dy << ")m/s ";
@@ -422,3 +423,4 @@ int main()
 
     return 0;
 }
+*/

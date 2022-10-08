@@ -8,6 +8,9 @@
 #include "uiInteract.h"
 #include "uiDraw.h"
 #include "ground.h"
+//#include "angle.cpp"
+//#include "physicsEquations.cpp"
+#include <list>
 using namespace std;
 
 /*************************************************************************
@@ -22,11 +25,12 @@ public:
         ptStar(ptUpperRight.getX() - 20.0, ptUpperRight.getY() - 20.0),
         ptLM(ptUpperRight.getX() / 2.0, ptUpperRight.getY() / 2.0),
         ground(ptUpperRight)
-    {
+        
+        {
 
-        phase = random(0, 255);
-    }
-
+            phase = random(0, 255);
+        }
+    
     // this is just for test purposes.  Don't make member variables public!
     Point ptLM;           // location of the LM on the screen
     Point ptUpperRight;   // size of the screen
@@ -34,6 +38,20 @@ public:
     unsigned char phase;  // phase of the star's blinking
     Ground ground;
     Point ptStar;
+    
+    
+
+    /*
+    * list<Point> starsList;
+    void generateStars() {
+        for (int i = 0; i < 50; i++)
+        {
+            int xPos = random(0, 255);
+            int yPos = random(0, 255);
+            Point* star = new Point(ptUpperRight.getX() - xPos, ptUpperRight.getY() - yPos);
+            starsList.push_back(*star);
+        }
+    }*/
 };
 
 /*************************************
@@ -46,6 +64,8 @@ public:
 void callBack(const Interface* pUI, void* p)
 {
     ogstream gout;
+    //MathFuntions mf;
+    //Angle angleObject;
 
     // the first step is to cast the void pointer into a game object. This
     // is the first step of every single callback function in OpenGL. 
@@ -53,14 +73,32 @@ void callBack(const Interface* pUI, void* p)
 
     // move the ship around
     if (pUI->isRight())
-        pDemo->angle -= 0.1;
+        //pDemo->angle -= 0.1;
+        pDemo->ptLM.setX(pDemo->ptLM.getX() + 1.0);
     if (pUI->isLeft())
-        pDemo->angle += 0.1;
+        //pDemo->angle += 0.1;
+        pDemo->ptLM.setX(pDemo->ptLM.getX() - 1.0);
     if (pUI->isUp())
         pDemo->ptLM.addY(-1.0);
     if (pUI->isDown())
         pDemo->ptLM.addY(1.0);
+    
 
+
+    // draw our little star
+    //gout.drawStar(pDemo->ptStar, pDemo->phase++);
+
+    
+    // Draw random stars
+    list<Point> starsList;
+    for (int i = 0; i <= 50; i++)
+    {
+        starsList.push_back(Point(random(0, 400), random(0, 400)));
+    }
+    for (Point star : starsList) {
+        gout.drawStar(star, random(0,255));
+    }
+    
     // draw the ground
     pDemo->ground.draw(gout);
 
@@ -72,10 +110,22 @@ void callBack(const Interface* pUI, void* p)
     // put some text on the screen
     gout.setPosition(Point(30.0, 30.0));
     gout << "Demo (" << (int)pDemo->ptLM.getX() << ", " << (int)pDemo->ptLM.getY() << ")" << "\n";
+    /*********************************
+    * Getters for ship Info
+    *********************************/
+    
+    // Display the ship Info
+    double fuel = 0.0;
+    double altitude = 0.0;
+    double speed = 0.0;
 
-    // draw our little star
-    gout.drawStar(pDemo->ptStar, pDemo->phase++);
+    gout.setPosition(Point(10.0, 350.0));
+    gout << "Fuel (" << fuel << ")" << "\n";
+    gout << "Altitude (" << altitude << ")" << "\n";
+    gout << "Speed (" << speed << ")" << "\n";
+    
 }
+
 
 /*********************************
  * Main is pretty sparse.  Just initialize
@@ -90,6 +140,9 @@ int WINAPI wWinMain(
     _In_ PWSTR pCmdLine,
     _In_ int nCmdShow)
 #else // !_WIN32
+
+
+
 int main(int argc, char** argv)
 #endif // !_WIN32
 {
@@ -101,6 +154,8 @@ int main(int argc, char** argv)
 
     // Initialize the game class
     Demo demo(ptUpperRight);
+
+    //demo.generateStars();
 
     // set everything into action
     ui.run(callBack, &demo);
