@@ -27,6 +27,6 @@ public:
 	}
 
 	void updateSpeed(double speedChange) {
-		speed += speedChange;
+		speed = speedChange;
 	}
 };

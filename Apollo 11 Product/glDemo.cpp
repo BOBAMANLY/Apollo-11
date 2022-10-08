@@ -13,6 +13,7 @@
 #include "LunarModule.cpp"
 #include <list>
 using namespace std;
+LunarModule ship;     // holds the speed, altitude, and fuel of the ship
 
 /*************************************************************************
  * Demo
@@ -73,21 +74,40 @@ void callBack(const Interface* pUI, void* p)
     Demo* pDemo = (Demo*)p;
 
 
-    // move the ship around
+ // move the ship around
     if (pUI->isRight())
         //pDemo->angle -= 0.1;
         pDemo->ptLM.setX(pDemo->ptLM.getX() + 1.0);
-        ship.updateFuel(-10);
     if (pUI->isLeft())
         //pDemo->angle += 0.1;
         pDemo->ptLM.setX(pDemo->ptLM.getX() - 1.0);
-        ship.updateFuel(-10);
     if (pUI->isUp())
         pDemo->ptLM.addY(-1.0);
-        ship.updateFuel(-50);
     if (pUI->isDown())
         pDemo->ptLM.addY(1.0);
+
+    if (pUI->isRight())
+        ship.updateFuel(-10);
+    if (pUI->isLeft())
+        ship.updateFuel(-10);
+    if (pUI->isUp())
         ship.updateFuel(-50);
+    if (pUI->isDown())
+        ship.updateFuel(-50);
+
+    if (pUI->isUp())
+        ship.updateAltitude(-1);
+    if (pUI->isDown())
+        ship.updateAltitude(1);
+
+    if (pUI->isRight())
+        ship.updateSpeed(10);
+    if (pUI->isLeft())
+        ship.updateSpeed(10);
+    if (pUI->isUp())
+        ship.updateSpeed(50);
+    if (pUI->isDown())
+        ship.updateSpeed(50);
     
 
 
