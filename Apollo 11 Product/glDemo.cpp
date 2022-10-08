@@ -10,6 +10,7 @@
 #include "ground.h"
 //#include "angle.cpp"
 //#include "physicsEquations.cpp"
+#include "LunarModule.cpp"
 #include <list>
 using namespace std;
 
@@ -66,22 +67,27 @@ void callBack(const Interface* pUI, void* p)
     ogstream gout;
     //MathFuntions mf;
     //Angle angleObject;
-
+    LunarModule ship;     // holds the speed, altitude, and fuel of the ship
     // the first step is to cast the void pointer into a game object. This
     // is the first step of every single callback function in OpenGL. 
     Demo* pDemo = (Demo*)p;
+
 
     // move the ship around
     if (pUI->isRight())
         //pDemo->angle -= 0.1;
         pDemo->ptLM.setX(pDemo->ptLM.getX() + 1.0);
+        ship.updateFuel(-10);
     if (pUI->isLeft())
         //pDemo->angle += 0.1;
         pDemo->ptLM.setX(pDemo->ptLM.getX() - 1.0);
+        ship.updateFuel(-10);
     if (pUI->isUp())
         pDemo->ptLM.addY(-1.0);
+        ship.updateFuel(-50);
     if (pUI->isDown())
         pDemo->ptLM.addY(1.0);
+        ship.updateFuel(-50);
     
 
 
@@ -115,14 +121,14 @@ void callBack(const Interface* pUI, void* p)
     *********************************/
     
     // Display the ship Info
-    double fuel = 0.0;
-    double altitude = 0.0;
-    double speed = 0.0;
+    double fuel = ship.getFuel();
+    double altitude = ship.getAltitude();
+    double speed = ship.getSpeed();
 
     gout.setPosition(Point(10.0, 350.0));
-    gout << "Fuel (" << fuel << ")" << "\n";
-    gout << "Altitude (" << altitude << ")" << "\n";
-    gout << "Speed (" << speed << ")" << "\n";
+    gout << "Fuel :" << fuel << " lbs." << "\n";
+    gout << "Altitude :" << altitude << " meters" << "\n";
+    gout << "Speed :" << speed << " m/s" << "\n";
     
 }
 
