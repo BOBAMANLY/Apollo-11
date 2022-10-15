@@ -10,11 +10,11 @@ private:
     double radians;
 
     // Functions
-    double convertToDegrees(double input) {
-        double pi = 2 * acos(0.0); // Solve PI
-        double degrees = (input * 360) / (2 * pi);
-        return degrees;
-    }
+    //double convertToDegrees(double input) {
+    //    double pi = 2 * acos(0.0); // Solve PI
+    //    double degrees = (input * 360) / (2 * pi);
+    //    return degrees;
+    //}
     double convertToRadians(double input) {
         double pi = 2 * acos(0.0); // Solve PI
         double radians = ((input * (2 * pi)) / 360);

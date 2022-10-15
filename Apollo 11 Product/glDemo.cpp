@@ -8,6 +8,7 @@
 #include "uiInteract.h"
 #include "uiDraw.h"
 #include "ground.h"
+#include <tuple>
 //#include "angle.cpp"
 #include "physicsEquations.cpp"
 #include "LunarModule.cpp"
@@ -80,7 +81,6 @@ void callBack(const Interface* pUI, void* p)
     // is the first step of every single callback function in OpenGL. 
     Demo* pDemo = (Demo*)p;
 
-
  // move the ship around
     if (pUI->isRight() and pDemo->ptLM.getX() < 390.0 and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
         //pDemo->angle -= 0.1;
@@ -88,10 +88,40 @@ void callBack(const Interface* pUI, void* p)
     if (pUI->isLeft() and pDemo->ptLM.getX() > 10.0 and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
         //pDemo->angle += 0.1;
         pDemo->ptLM.setX(pDemo->ptLM.getX() - 1.0);
+
     if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
         pDemo->ptLM.addY(-2.0);
     if (pUI->isDown() and ship.getFuel() > 0)
         pDemo->ptLM.addY(2.0);
+
+    // Attempted turn using math
+    //double ddx, ddy;
+    //tie(ddx, ddy) = ship.moveLM(pDemo->angle);
+    //if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
+    //    pDemo->ptLM.addX(ddx);
+    //if (pUI->isDown() and ship.getFuel() > 0)
+    //    pDemo->ptLM.addY(ddy);
+    //if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
+    //    pDemo->ptLM.addX(ddx);
+    //if (pUI->isDown() and ship.getFuel() > 0)
+    //    pDemo->ptLM.addY(ddy);
+
+    // Manual turn
+    //if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > -1.7 > pDemo->angle > -1.3)
+    //    pDemo->ptLM.addX(-2.0);
+    //if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 1.7 > pDemo->angle > 1.3)
+    //    pDemo->ptLM.addX(2.0);
+    //if (pUI->isDown() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > -1.7 > pDemo->angle > -1.3)
+    //    pDemo->ptLM.addX(2.0);
+    //if (pUI->isDown() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 1.7 > pDemo->angle > 1.3)
+    //    pDemo->ptLM.addX(-2.0);
+
+    cout << pDemo->angle << endl;
+    // Turn
+    if (pUI->isRight() and pDemo->ptLM.getX() < 390.0 and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
+        pDemo->angle -= 0.1;
+    if (pUI->isLeft() and pDemo->ptLM.getX() > 10.0 and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
+        pDemo->angle += 0.1;
 
     // move because of gravity
     if (pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false)

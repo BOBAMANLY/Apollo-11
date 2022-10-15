@@ -1,3 +1,3 @@
 ﻿  glDemo.cpp
-C:\Users\jacob\Documents\GitHub\Apollo-11\Apollo 11 Product\glDemo.cpp(76,13): warning C4101: 'mf': unreferenced local variable
+C:\Users\jacob\Documents\GitHub\Apollo-11\Apollo 11 Product\glDemo.cpp(77,13): warning C4101: 'mf': unreferenced local variable
   Apollo 11 Product.vcxproj -> C:\Users\jacob\Documents\GitHub\Apollo-11\Apollo 11 Product\x64\Debug\Apollo 11 Product.exe

@@ -1,4 +1,5 @@
 #include "physicsEquations.cpp"
+#include <tuple>
 
 
 class LunarModule {
@@ -47,6 +48,20 @@ public:
 
 	double getLastAcceleration() {
 		return lastAcceleration;
+	}
+
+	tuple<double, double> moveLM(double radians) {
+		double degrees = convertToDegrees(radians);
+		double ddx = math.Computeddx(degrees);
+		double ddy = math.Computeddy(degrees);
+		return std::make_tuple(ddx, ddy);
+		
+	}
+
+	double convertToDegrees(double input) {
+		double pi = 2 * acos(0.0); // Solve PI
+		double degrees = (input * 360) / (2 * pi);
+		return degrees;
 	}
 
 };
