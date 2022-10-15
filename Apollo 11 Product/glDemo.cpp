@@ -73,7 +73,7 @@ public:
 void callBack(const Interface* pUI, void* p)
 {
     ogstream gout;
-    MathFunctions mf;
+    MathFun mf;
     //Angle angleObject;
     //LunarModule ship;     // holds the speed, altitude, and fuel of the ship
     // the first step is to cast the void pointer into a game object. This
@@ -96,22 +96,8 @@ void callBack(const Interface* pUI, void* p)
     // move because of gravity
     if (pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false)
         pDemo->ptLM.setY(pDemo->ptLM.getY() - 1);
-    
-    // set last acceleration
-    if (pUI->isRight() and pDemo->ptLM.getX() < 390.0 and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
-        //pDemo->angle -= 0.1;
-        ship.setLastAcceleration(1.0);
-    if (pUI->isLeft() and pDemo->ptLM.getX() > 10.0 and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
-        //pDemo->angle += 0.1;
-        ship.setLastAcceleration(1.0);
-    if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
-        ship.setLastAcceleration(2.0);
-    if (pUI->isDown() and ship.getFuel() > 0)
-        ship.setLastAcceleration(2.0);
 
-    // move because of gravity
-    if (pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false)
-        ship.setLastAcceleration(1.0);
+    
 
     if (pUI->isRight() and ship.getFuel() > 0)
         ship.setFuel(ship.getFuel() - 1);
@@ -122,6 +108,22 @@ void callBack(const Interface* pUI, void* p)
     if (pUI->isDown() and ship.getFuel() > 0)
         ship.updateFuel(-10);
 
+    ship.setLastAcceleration(1.0);
+    if (pUI->isRight())
+        ship.setLastAcceleration(1.0);
+       
+    if (pUI->isLeft())
+        ship.setLastAcceleration(1.0);
+       
+    if (pUI->isUp())
+        ship.setLastAcceleration(3.0);
+       
+    if (pUI->isDown())
+        ship.setLastAcceleration(2.0);
+      
+    if (pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == true)
+        ship.setLastAcceleration(0.0);
+   
     
         
 
@@ -157,6 +159,13 @@ void callBack(const Interface* pUI, void* p)
     // put some text on the screen
     gout.setPosition(Point(30.0, 30.0));
     gout << "Demo (" << (int)pDemo->ptLM.getX() << ", " << (int)pDemo->ptLM.getY() << ")" << "\n";
+
+    if (pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == true and ship.getFuel() < 0 and pDemo->ground.onPlatform(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false)
+    {
+        
+        gout.setPosition(Point(200.0, 200.0));
+        gout << "GAME OVER" << "\n";
+    }
     /*********************************
     * Getters for ship Info
     *********************************/
@@ -170,7 +179,7 @@ void callBack(const Interface* pUI, void* p)
     // Display the ship Info
     double fuel = ship.getFuel();
     //double altitude = ship.getAltitude();
-    double speed = ship.getVelocity();
+    double speed = ship.getLastAcceleration();
 
     
 

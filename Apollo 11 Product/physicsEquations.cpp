@@ -23,8 +23,8 @@ using namespace std;
 #define WEIGHT   15103.000   // Weight in KG
 #define GRAVITY     -1.625   // Vertical acceleration due to gravity, in m/s^2
 #define THRUST   45000.000   // Thrust of main engine, in Newtons (kg m/s^2)
-
-class MathFunctions {
+#pragma once
+class MathFun {
 public:
 
     /***************************************************
@@ -206,7 +206,7 @@ public:
  * OUTPUT
  *      response : the user's response
  ***************************************************/
-
+/*
 double prompt(string message)
 {
     double response;
@@ -347,7 +347,7 @@ int test()
     }
     return 0;
 }
-
+*/
 /****************************************************************
  * MAIN
  * Prompt for input, compute new position, and display output

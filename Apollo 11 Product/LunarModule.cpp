@@ -45,13 +45,8 @@ public:
 		speed = speedChange;
 	}
 
-	void calculateVelocity() {
-		velocity = math.computeVelocity(velocity, lastAcceleration, 1.0);
-		cout << velocity << endl;
+	double getLastAcceleration() {
+		return lastAcceleration;
 	}
 
-	double getVelocity() {
-		calculateVelocity();
-		return velocity;
-	}
 };
