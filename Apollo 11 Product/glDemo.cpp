@@ -9,7 +9,7 @@
 #include "uiDraw.h"
 #include "ground.h"
 #include <tuple>
-//#include "angle.cpp"
+#include "angle.cpp"
 #include "physicsEquations.cpp"
 #include "LunarModule.cpp"
 #include <list>
@@ -48,6 +48,7 @@ public:
     unsigned char phase;  // phase of the star's blinking
     Ground ground;
     Point ptStar;
+    
     
     
 
@@ -94,6 +95,9 @@ void callBack(const Interface* pUI, void* p)
     if (pUI->isDown() and ship.getFuel() > 0)
         pDemo->ptLM.addY(2.0);
 
+    //if (pUI->isDown() and ship.getFuel() > 0)
+    //        pDemo->ptLM.addX(1);
+
     // Attempted turn using math
     //double ddx, ddy;
     //tie(ddx, ddy) = ship.moveLM(pDemo->angle);
@@ -107,14 +111,10 @@ void callBack(const Interface* pUI, void* p)
     //    pDemo->ptLM.addY(ddy);
 
     // Manual turn
-    //if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > -1.7 > pDemo->angle > -1.3)
-    //    pDemo->ptLM.addX(-2.0);
-    //if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 1.7 > pDemo->angle > 1.3)
-    //    pDemo->ptLM.addX(2.0);
-    //if (pUI->isDown() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > -1.7 > pDemo->angle > -1.3)
-    //    pDemo->ptLM.addX(2.0);
-    //if (pUI->isDown() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 1.7 > pDemo->angle > 1.3)
-    //    pDemo->ptLM.addX(-2.0);
+    if (pUI->isDown() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > -1.7 > pDemo->angle > -1.3)
+        pDemo->ptLM.addX(-pDemo->angle);
+    if (pUI->isDown() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 1.7 > pDemo->angle > 1.3)
+        pDemo->ptLM.addX(-pDemo->angle);
 
     cout << pDemo->angle << endl;
     // Turn
