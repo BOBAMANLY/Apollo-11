@@ -9,12 +9,13 @@
 #include "uiDraw.h"
 #include "ground.h"
 //#include "angle.cpp"
-//#include "physicsEquations.cpp"
+#include "physicsEquations.cpp"
 #include "LunarModule.cpp"
 #include <list>
 using namespace std;
 LunarModule ship;     // holds the speed, altitude, and fuel of the ship
 list<Point> starsList;
+//MathFun math;
 
 
 /*************************************************************************
@@ -88,32 +89,50 @@ void callBack(const Interface* pUI, void* p)
         //pDemo->angle += 0.1;
         pDemo->ptLM.setX(pDemo->ptLM.getX() - 1.0);
     if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
-        pDemo->ptLM.addY(-1.0);
+        pDemo->ptLM.addY(-2.0);
     if (pUI->isDown() and ship.getFuel() > 0)
-        pDemo->ptLM.addY(1.0);
+        pDemo->ptLM.addY(2.0);
+
+    // move because of gravity
+    if (pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false)
+        pDemo->ptLM.setY(pDemo->ptLM.getY() - 1);
+    
+    // set last acceleration
+    if (pUI->isRight() and pDemo->ptLM.getX() < 390.0 and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
+        //pDemo->angle -= 0.1;
+        ship.setLastAcceleration(1.0);
+    if (pUI->isLeft() and pDemo->ptLM.getX() > 10.0 and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
+        //pDemo->angle += 0.1;
+        ship.setLastAcceleration(1.0);
+    if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
+        ship.setLastAcceleration(2.0);
+    if (pUI->isDown() and ship.getFuel() > 0)
+        ship.setLastAcceleration(2.0);
+
+    // move because of gravity
+    if (pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false)
+        ship.setLastAcceleration(1.0);
 
     if (pUI->isRight() and ship.getFuel() > 0)
-        ship.setFuel(ship.getFuel() - 10);
+        ship.setFuel(ship.getFuel() - 1);
     if (pUI->isLeft() and ship.getFuel() > 0)
-        ship.updateFuel(-10);
+        ship.updateFuel(-1);
     if (pUI->isUp() and ship.getFuel() > 0)
-        ship.updateFuel(-50);
+        ship.updateFuel(-10);
     if (pUI->isDown() and ship.getFuel() > 0)
-        ship.updateFuel(-50);
+        ship.updateFuel(-10);
 
-    if (pUI->isUp())
-        ship.updateAltitude(-1);
-    if (pUI->isDown())
-        ship.updateAltitude(1);
+    
+        
 
     if (pUI->isRight())
-        ship.updateSpeed(10);
+        ship.updateSpeed(1);
     if (pUI->isLeft())
-        ship.updateSpeed(10);
+        ship.updateSpeed(1);
     if (pUI->isUp())
-        ship.updateSpeed(50);
+        ship.updateSpeed(10);
     if (pUI->isDown())
-        ship.updateSpeed(50);
+        ship.updateSpeed(10);
     
 
 
@@ -141,11 +160,19 @@ void callBack(const Interface* pUI, void* p)
     /*********************************
     * Getters for ship Info
     *********************************/
-    
+
+    double altitude;
+    altitude = pDemo->ground.getElevation(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()));
+    if (ship.getFuel() < 0)
+        ship.setFuel(0);
+    if (pDemo->ground.getElevation(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY())) < 0 or pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == true)
+        altitude = 0;
     // Display the ship Info
     double fuel = ship.getFuel();
-    double altitude = ship.getAltitude();
-    double speed = ship.getSpeed();
+    //double altitude = ship.getAltitude();
+    double speed = ship.getVelocity();
+
+    
 
     gout.setPosition(Point(10.0, 350.0));
     gout << "Fuel :" << fuel << " lbs." << "\n";

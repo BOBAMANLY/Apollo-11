@@ -1,10 +1,22 @@
+#include "physicsEquations.cpp"
+
+
 class LunarModule {
 private:
+	
 	int fuel = 3000;
 	int altitude = 0;
 	double speed = 0;
+	double velocity = 0;
+	double lastAcceleration = 0;
+	MathFun math;
+	
 
 public:
+
+	void setLastAcceleration(double a) {
+		lastAcceleration = a;
+	}
 
 	int getFuel() {
 		return fuel;
@@ -31,5 +43,15 @@ public:
 
 	void updateSpeed(double speedChange) {
 		speed = speedChange;
+	}
+
+	void calculateVelocity() {
+		velocity = math.computeVelocity(velocity, lastAcceleration, 1.0);
+		cout << velocity << endl;
+	}
+
+	double getVelocity() {
+		calculateVelocity();
+		return velocity;
 	}
 };
