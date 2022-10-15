@@ -2,6 +2,9 @@
  * GL Demo
  * Just a simple program to demonstrate how to create an Open GL window,
  * draw something on the window, and accept simple user input
+ * 
+ * Authors:
+ * Jacob Fisher, Joseph Gyman, Philip Marvin
  **********************************************************************/
 
 #include "point.h"
