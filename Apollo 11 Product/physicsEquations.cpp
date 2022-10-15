@@ -24,7 +24,7 @@ using namespace std;
 #define GRAVITY     -1.625   // Vertical acceleration due to gravity, in m/s^2
 #define THRUST   45000.000   // Thrust of main engine, in Newtons (kg m/s^2)
 
-class MathFuntions {
+class MathFunctions {
 public:
 
     /***************************************************

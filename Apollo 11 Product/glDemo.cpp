@@ -72,7 +72,7 @@ public:
 void callBack(const Interface* pUI, void* p)
 {
     ogstream gout;
-    //MathFuntions mf;
+    MathFunctions mf;
     //Angle angleObject;
     //LunarModule ship;     // holds the speed, altitude, and fuel of the ship
     // the first step is to cast the void pointer into a game object. This
