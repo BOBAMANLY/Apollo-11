@@ -17,6 +17,9 @@ public:
 	double getSpeed() {
 		return speed;
 	}
+	void setFuel(int newFuel) {
+		fuel = newFuel;
+	}
 
 	void updateFuel(int fuelChange) {
 		fuel += fuelChange;

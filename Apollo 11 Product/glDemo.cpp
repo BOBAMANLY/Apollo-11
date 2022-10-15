@@ -14,6 +14,8 @@
 #include <list>
 using namespace std;
 LunarModule ship;     // holds the speed, altitude, and fuel of the ship
+list<Point> starsList;
+
 
 /*************************************************************************
  * Demo
@@ -25,12 +27,16 @@ public:
     Demo(const Point& ptUpperRight) :
         angle(0.0),
         ptStar(ptUpperRight.getX() - 20.0, ptUpperRight.getY() - 20.0),
-        ptLM(ptUpperRight.getX() / 2.0, ptUpperRight.getY() / 2.0),
+        ptLM(ptUpperRight.getX() / 2.0, 350),
         ground(ptUpperRight)
         
         {
 
             phase = random(0, 255);
+            for (int i = 0; i <= 50; i++)
+            {
+                starsList.push_back(Point(random(0, 400), random(0, 400)));
+            }
         }
     
     // this is just for test purposes.  Don't make member variables public!
@@ -68,31 +74,31 @@ void callBack(const Interface* pUI, void* p)
     ogstream gout;
     //MathFuntions mf;
     //Angle angleObject;
-    LunarModule ship;     // holds the speed, altitude, and fuel of the ship
+    //LunarModule ship;     // holds the speed, altitude, and fuel of the ship
     // the first step is to cast the void pointer into a game object. This
     // is the first step of every single callback function in OpenGL. 
     Demo* pDemo = (Demo*)p;
 
 
  // move the ship around
-    if (pUI->isRight())
+    if (pUI->isRight() and pDemo->ptLM.getX() < 390.0 and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
         //pDemo->angle -= 0.1;
         pDemo->ptLM.setX(pDemo->ptLM.getX() + 1.0);
-    if (pUI->isLeft())
+    if (pUI->isLeft() and pDemo->ptLM.getX() > 10.0 and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
         //pDemo->angle += 0.1;
         pDemo->ptLM.setX(pDemo->ptLM.getX() - 1.0);
-    if (pUI->isUp())
+    if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
         pDemo->ptLM.addY(-1.0);
-    if (pUI->isDown())
+    if (pUI->isDown() and ship.getFuel() > 0)
         pDemo->ptLM.addY(1.0);
 
-    if (pUI->isRight())
+    if (pUI->isRight() and ship.getFuel() > 0)
+        ship.setFuel(ship.getFuel() - 10);
+    if (pUI->isLeft() and ship.getFuel() > 0)
         ship.updateFuel(-10);
-    if (pUI->isLeft())
-        ship.updateFuel(-10);
-    if (pUI->isUp())
+    if (pUI->isUp() and ship.getFuel() > 0)
         ship.updateFuel(-50);
-    if (pUI->isDown())
+    if (pUI->isDown() and ship.getFuel() > 0)
         ship.updateFuel(-50);
 
     if (pUI->isUp())
@@ -116,11 +122,7 @@ void callBack(const Interface* pUI, void* p)
 
     
     // Draw random stars
-    list<Point> starsList;
-    for (int i = 0; i <= 50; i++)
-    {
-        starsList.push_back(Point(random(0, 400), random(0, 400)));
-    }
+    
     for (Point star : starsList) {
         gout.drawStar(star, random(0,255));
     }
