@@ -23,8 +23,8 @@ using namespace std;
 #define WEIGHT   15103.000   // Weight in KG
 #define GRAVITY     -1.625   // Vertical acceleration due to gravity, in m/s^2
 #define THRUST   45000.000   // Thrust of main engine, in Newtons (kg m/s^2)
-#pragma once
-class MathFun {
+
+class MathFunctions {
 public:
 
     /***************************************************
@@ -207,146 +207,146 @@ public:
  *      response : the user's response
  ***************************************************/
 
-//double prompt(string message)
-//{
-//    double response;
-//    cout << message << endl;
-//    cin >> response;
-//    return response;
-//}
+double prompt(string message)
+{
+    double response;
+    cout << message << endl;
+    cin >> response;
+    return response;
+}
 
 // Test function to run 3 test cases through automation
-//int test_math()
-//{
-//    double aRadians;
-//    double ddx;
-//    double ddy;
-//    double v;
-//    double t = 1.0;
-//    MathFuntions math;
-//
-//
-//    // Test Case 1
-//    cout << endl << "Test 1" << endl;
-//    double dx = 10.53;
-//    double dy = -13.959;
-//    double y = 100.0;
-//    double x = 0.0;
-//    double aDegrees = -45.0;
-//    double newAngle = 0.00;
-//
-//    aRadians = math.convertToRadians(aDegrees);
-//
-//    for (int i = 0; i < 10; i++)
-//    {
-//        if (i == 5)
-//        {
-//            aRadians = math.convertToRadians(newAngle);
-//            aDegrees = newAngle;
-//            cout << "New Angle" << endl;
-//        }
-//
-//        // Calculations
-//        ddx = math.Computeddx(aRadians);
-//        ddy = math.Computeddy(aRadians);
-//        dx = math.computeVelocity(dx, ddx, t);
-//        dy = math.computeVelocity(dy, ddy, t);
-//        x = math.computeDistance(x, dx, ddx, t);
-//        y = math.computeDistance(y, dy, ddy, t);
-//        v = math.computeTotalComponent(dx, dy);
-//
-//        // Output
-//        int count = i;
-//        count++;
-//        cout.setf(ios::fixed | ios::showpoint);
-//        cout.precision(2);
-//
-//        cout << count << "s" << " (X,Y): (" << x << ", " << y << ")m ";
-//        cout << "(DX, DY): (" << dx << ", " << dy << ")m/s ";
-//        cout << "Speed: " << v << "m/s " << "Angle: " << aDegrees << " degrees" << endl;
-//    }
-//
-//    // Test Case 2
-//    cout << endl << "Test 2" << endl;
-//    dx = -35.00;
-//    dy = -15.000;
-//    y = 207.77;
-//    x = 0.0;
-//    aDegrees = 90.00;
-//    newAngle = 45.00;
-//
-//    aRadians = math.convertToRadians(aDegrees);
-//
-//    for (int i = 0; i < 10; i++)
-//    {
-//        if (i == 5)
-//        {
-//            aRadians = math.convertToRadians(newAngle);
-//            aDegrees = newAngle;
-//            cout << "New Angle" << endl;
-//        }
-//
-//        // Calculations
-//        ddx = math.Computeddx(aRadians);
-//        ddy = math.Computeddy(aRadians);
-//        dx = math.computeVelocity(dx, ddx, t);
-//        dy = math.computeVelocity(dy, ddy, t);
-//        x = math.computeDistance(x, dx, ddx, t);
-//        y = math.computeDistance(y, dy, ddy, t);
-//        v = math.computeTotalComponent(dx, dy);
-//
-//        // Output
-//        int count = i;
-//        count++;
-//        cout.setf(ios::fixed | ios::showpoint);
-//        cout.precision(2);
-//
-//        cout << count << "s" << " (X,Y): (" << x << ", " << y << ")m ";
-//        cout << "(DX, DY): (" << dx << ", " << dy << ")m/s ";
-//        cout << "Speed: " << v << "m/s " << "Angle: " << aDegrees << " degrees" << endl;
-//    }
-//
-//    // Test Case 3
-//    cout << endl << "Test 3" << endl;
-//    dx = 10.00;
-//    dy = -10.000;
-//    y = 56.11;
-//    x = 0.0;
-//    aDegrees = -42.185;
-//    newAngle = 0;
-//
-//    aRadians = math.convertToRadians(aDegrees);
-//
-//    for (int i = 0; i < 10; i++)
-//    {
-//        if (i == 5)
-//        {
-//            aRadians = math.convertToRadians(newAngle);
-//            aDegrees = newAngle;
-//            cout << "New Angle" << endl;
-//        }
-//
-//        // Calculations
-//        ddx = math.Computeddx(aRadians);
-//        ddy = math.Computeddy(aRadians);
-//        dx = math.computeVelocity(dx, ddx, t);
-//        dy = math.computeVelocity(dy, ddy, t);
-//        x = math.computeDistance(x, dx, ddx, t);
-//        y = math.computeDistance(y, dy, ddy, t);
-//        v = math.computeTotalComponent(dx, dy);
-//
-//        // Output
-//        int count = i;
-//        count++;
-//        cout.setf(ios::fixed | ios::showpoint);
-//        cout.precision(2);
-//
-//        cout << count << "s" << " (X,Y): (" << x << ", " << y << ")m ";
-//        cout << "(DX, DY): (" << dx << ", " << dy << ")m/s ";
-//        cout << "Speed: " << v << "m/s " << "Angle: " << aDegrees << " degrees" << endl;
-//    }
-//    return 0;
-//}
+int test()
+{
+    double aRadians;
+    double ddx;
+    double ddy;
+    double v;
+    double t = 1.0;
+    MathFuntions math;
+
+
+    // Test Case 1
+    cout << endl << "Test 1" << endl;
+    double dx = 10.53;
+    double dy = -13.959;
+    double y = 100.0;
+    double x = 0.0;
+    double aDegrees = -45.0;
+    double newAngle = 0.00;
+
+    aRadians = math.convertToRadians(aDegrees);
+
+    for (int i = 0; i < 10; i++)
+    {
+        if (i == 5)
+        {
+            aRadians = math.convertToRadians(newAngle);
+            aDegrees = newAngle;
+            cout << "New Angle" << endl;
+        }
+
+        // Calculations
+        ddx = math.Computeddx(aRadians);
+        ddy = math.Computeddy(aRadians);
+        dx = math.computeVelocity(dx, ddx, t);
+        dy = math.computeVelocity(dy, ddy, t);
+        x = math.computeDistance(x, dx, ddx, t);
+        y = math.computeDistance(y, dy, ddy, t);
+        v = math.computeTotalComponent(dx, dy);
+
+        // Output
+        int count = i;
+        count++;
+        cout.setf(ios::fixed | ios::showpoint);
+        cout.precision(2);
+
+        cout << count << "s" << " (X,Y): (" << x << ", " << y << ")m ";
+        cout << "(DX, DY): (" << dx << ", " << dy << ")m/s ";
+        cout << "Speed: " << v << "m/s " << "Angle: " << aDegrees << " degrees" << endl;
+    }
+
+    // Test Case 2
+    cout << endl << "Test 2" << endl;
+    dx = -35.00;
+    dy = -15.000;
+    y = 207.77;
+    x = 0.0;
+    aDegrees = 90.00;
+    newAngle = 45.00;
+
+    aRadians = math.convertToRadians(aDegrees);
+
+    for (int i = 0; i < 10; i++)
+    {
+        if (i == 5)
+        {
+            aRadians = math.convertToRadians(newAngle);
+            aDegrees = newAngle;
+            cout << "New Angle" << endl;
+        }
+
+        // Calculations
+        ddx = math.Computeddx(aRadians);
+        ddy = math.Computeddy(aRadians);
+        dx = math.computeVelocity(dx, ddx, t);
+        dy = math.computeVelocity(dy, ddy, t);
+        x = math.computeDistance(x, dx, ddx, t);
+        y = math.computeDistance(y, dy, ddy, t);
+        v = math.computeTotalComponent(dx, dy);
+
+        // Output
+        int count = i;
+        count++;
+        cout.setf(ios::fixed | ios::showpoint);
+        cout.precision(2);
+
+        cout << count << "s" << " (X,Y): (" << x << ", " << y << ")m ";
+        cout << "(DX, DY): (" << dx << ", " << dy << ")m/s ";
+        cout << "Speed: " << v << "m/s " << "Angle: " << aDegrees << " degrees" << endl;
+    }
+
+    // Test Case 3
+    cout << endl << "Test 3" << endl;
+    dx = 10.00;
+    dy = -10.000;
+    y = 56.11;
+    x = 0.0;
+    aDegrees = -42.185;
+    newAngle = 0;
+
+    aRadians = math.convertToRadians(aDegrees);
+
+    for (int i = 0; i < 10; i++)
+    {
+        if (i == 5)
+        {
+            aRadians = math.convertToRadians(newAngle);
+            aDegrees = newAngle;
+            cout << "New Angle" << endl;
+        }
+
+        // Calculations
+        ddx = math.Computeddx(aRadians);
+        ddy = math.Computeddy(aRadians);
+        dx = math.computeVelocity(dx, ddx, t);
+        dy = math.computeVelocity(dy, ddy, t);
+        x = math.computeDistance(x, dx, ddx, t);
+        y = math.computeDistance(y, dy, ddy, t);
+        v = math.computeTotalComponent(dx, dy);
+
+        // Output
+        int count = i;
+        count++;
+        cout.setf(ios::fixed | ios::showpoint);
+        cout.precision(2);
+
+        cout << count << "s" << " (X,Y): (" << x << ", " << y << ")m ";
+        cout << "(DX, DY): (" << dx << ", " << dy << ")m/s ";
+        cout << "Speed: " << v << "m/s " << "Angle: " << aDegrees << " degrees" << endl;
+    }
+    return 0;
+}
 
 /****************************************************************
  * MAIN
