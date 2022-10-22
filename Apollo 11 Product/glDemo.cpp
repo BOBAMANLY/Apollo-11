@@ -130,7 +130,7 @@ void callBack(const Interface* pUI, void* p)
     if (pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false)
         pDemo->ptLM.setY(pDemo->ptLM.getY() - 1);
 
-    
+    pDemo->ptLM.addX(-pDemo->angle);
 
     if (pUI->isRight() and ship.getFuel() > 0)
         ship.setFuel(ship.getFuel() - 1);
