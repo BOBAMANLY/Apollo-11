@@ -1,7 +1,1 @@
-﻿  glDemo.cpp
-C:\Users\jacob\Documents\GitHub\Apollo-11\Apollo 11 Product\glDemo.cpp(114,130): warning C4804: '>': unsafe use of type 'bool' in operation
-C:\Users\jacob\Documents\GitHub\Apollo-11\Apollo 11 Product\glDemo.cpp(114,137): warning C4804: '>': unsafe use of type 'bool' in operation
-C:\Users\jacob\Documents\GitHub\Apollo-11\Apollo 11 Product\glDemo.cpp(116,130): warning C4804: '>': unsafe use of type 'bool' in operation
-C:\Users\jacob\Documents\GitHub\Apollo-11\Apollo 11 Product\glDemo.cpp(116,136): warning C4804: '>': unsafe use of type 'bool' in operation
-C:\Users\jacob\Documents\GitHub\Apollo-11\Apollo 11 Product\glDemo.cpp(78,13): warning C4101: 'mf': unreferenced local variable
-  Apollo 11 Product.vcxproj -> C:\Users\jacob\Documents\GitHub\Apollo-11\Apollo 11 Product\x64\Debug\Apollo 11 Product.exe
+﻿  Apollo 11 Product.vcxproj -> C:\Users\ph1ln\OneDrive\Documents\CSE 230\Wk 5\Apollo-11\Apollo 11 Product\x64\Debug\Apollo 11 Product.exe
