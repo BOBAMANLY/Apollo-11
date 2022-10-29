@@ -19,7 +19,6 @@
 using namespace std;
 LunarModule ship;     // holds the speed, altitude, and fuel of the ship
 list<Point> starsList;
-//MathFun math;
 
 
 /*************************************************************************
@@ -79,8 +78,6 @@ void callBack(const Interface* pUI, void* p)
 {
     ogstream gout;
     MathFun mf;
-    //Angle angleObject;
-    //LunarModule ship;     // holds the speed, altitude, and fuel of the ship
     // the first step is to cast the void pointer into a game object. This
     // is the first step of every single callback function in OpenGL. 
     Demo* pDemo = (Demo*)p;
@@ -98,28 +95,12 @@ void callBack(const Interface* pUI, void* p)
     if (pUI->isDown() and ship.getFuel() > 0)
         pDemo->ptLM.addY(2.0);
 
-    //if (pUI->isDown() and ship.getFuel() > 0)
-    //        pDemo->ptLM.addX(1);
-
-    // Attempted turn using math
-    //double ddx, ddy;
-    //tie(ddx, ddy) = ship.moveLM(pDemo->angle);
-    //if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
-    //    pDemo->ptLM.addX(ddx);
-    //if (pUI->isDown() and ship.getFuel() > 0)
-    //    pDemo->ptLM.addY(ddy);
-    //if (pUI->isUp() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
-    //    pDemo->ptLM.addX(ddx);
-    //if (pUI->isDown() and ship.getFuel() > 0)
-    //    pDemo->ptLM.addY(ddy);
-
     // Manual turn
     if (pUI->isDown() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > -1.7 > pDemo->angle > -1.3)
         pDemo->ptLM.addX(-pDemo->angle);
     if (pUI->isDown() and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 1.7 > pDemo->angle > 1.3)
         pDemo->ptLM.addX(-pDemo->angle);
 
-    cout << pDemo->angle << endl;
     // Turn
     if (pUI->isRight() and pDemo->ptLM.getX() < 390.0 and pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false and ship.getFuel() > 0)
         pDemo->angle -= 0.1;
@@ -128,9 +109,10 @@ void callBack(const Interface* pUI, void* p)
 
     // move because of gravity
     if (pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false)
+    {
         pDemo->ptLM.setY(pDemo->ptLM.getY() - 1);
-
-    pDemo->ptLM.addX(-pDemo->angle);
+        pDemo->ptLM.addX(-pDemo->angle);
+    }
 
     if (pUI->isRight() and ship.getFuel() > 0)
         ship.setFuel(ship.getFuel() - 1);
@@ -169,12 +151,6 @@ void callBack(const Interface* pUI, void* p)
     if (pUI->isDown())
         ship.updateSpeed(10);
     
-
-
-    // draw our little star
-    //gout.drawStar(pDemo->ptStar, pDemo->phase++);
-
-    
     // Draw random stars
     
     for (Point star : starsList) {
@@ -193,9 +169,8 @@ void callBack(const Interface* pUI, void* p)
     gout.setPosition(Point(30.0, 30.0));
     gout << "Demo (" << (int)pDemo->ptLM.getX() << ", " << (int)pDemo->ptLM.getY() << ")" << "\n";
 
-    if (pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == true and ship.getFuel() < 0 and pDemo->ground.onPlatform(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false)
+    if (pDemo->ground.hitGround(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == true and ship.getFuel() <= 0 and pDemo->ground.onPlatform(Point(pDemo->ptLM.getX(), pDemo->ptLM.getY()), 10) == false)
     {
-        
         gout.setPosition(Point(200.0, 200.0));
         gout << "GAME OVER" << "\n";
     }
