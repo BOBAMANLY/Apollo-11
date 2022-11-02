@@ -30,6 +30,5 @@ public:
 	double HorizontalComponentSpeed(double speed, double direction);
 	double AngleFromComponents(double dx, double dy);
 	double pythagoreanTheorem(double dx, double dy);
-	double interpoleration(double r0, double d0, double r1, double d1);
-	float computeDistance(const Position& pos1, const Position& pos2);
+	double interpolation(double r0, double d0, double r1, double d1, double d);
 };

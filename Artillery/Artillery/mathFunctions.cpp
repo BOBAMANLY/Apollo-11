@@ -107,7 +107,7 @@ double mathFunctions :: pythagoreanTheorem(double dx, double dy) {
 
 	return speed, dx;
 }
-double mathFunctions :: interpoleration(double d0, double r0, double d1, double r1, double d) {
+double mathFunctions :: interpolation(double d0, double r0, double d1, double r1, double d) {
 
 	// TODO: Not done
 	/*
@@ -165,13 +165,14 @@ int main()
 	test1.setDegrees(0.0);
 	cout << test1.getDegrees() << endl;
 	cout << "Distance:      ";
-	cout << ptest1.computeDistance(ptest1.pos1, ptest1.pos2) << "       ";
+	cout << ptest1.computeDistance(pos1.getMetersX(), pos2.getMetersY()) << "       ";
 	cout << "Hang Time:     ";
 	//cout << test1.DragForceEquation() << endl;
 
 	// Test case high
 	cout << "What is the angle of the howitzer where 0 is up (Degrees)? " << endl;
 	mathFunctions test2;
+	Position ptest2;
 	test2.setDegrees(30.0);
 	cout << test2.getDegrees() << endl;
 	cout << "Distance:      ";
@@ -182,6 +183,7 @@ int main()
 	// Test case low
 	cout << "What is the angle of the howitzer where 0 is up (Degrees)? " << endl;
 	mathFunctions test3;
+	Position ptest3;
 	test3.setDegrees(60.0);
 	cout << test3.getDegrees() << endl;
 	cout << "Distance:      ";
@@ -192,6 +194,7 @@ int main()
 	// Test case backwards
 	cout << "What is the angle of the howitzer where 0 is up (Degrees)? " << endl;
 	mathFunctions test4;
+	Position ptest4;
 	test4.setDegrees(-45.0);
 	cout << test4.getDegrees() << endl;
 	cout << "Distance:      ";
