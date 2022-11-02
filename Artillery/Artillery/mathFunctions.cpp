@@ -1,13 +1,14 @@
 ﻿// Artillery.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Names: Philip Marvin, Jacob Fisher, Joseph Gyman
 //
 
 #include <iostream>
 #include "mathFunctions.h"
-#include <math.h>
+#include "math.h"
 #include <cmath>
-#include <position.h>
-#include <position.cpp>
+#include "position.cpp"
 using namespace std;
+
 
 // Setters
 void mathFunctions :: setDegrees(double input)
@@ -106,7 +107,7 @@ double mathFunctions :: pythagoreanTheorem(double dx, double dy) {
 
 	return speed, dx;
 }
-double mathFunctions :: interpolation(double input = 200) {
+double mathFunctions :: interpoleration(double d0, double r0, double d1, double r1, double d) {
 
 	// TODO: Not done
 	/*
@@ -115,12 +116,8 @@ double mathFunctions :: interpolation(double input = 200) {
 		d,r = coordinates of a point in the middle
 	*/
 	// (r - r0) / (d - d0) = (r1 - r0) / (d1 - d0)
+	// for finding Density at altitude
 	//(r - 1.225)/(d - 0) = (1.112 - 1.225) / (1000 - 0)
-	double d0 = 0.0;
-	double r0 = 1.225
-	double d1 = 1000;
-	double r1 = 1.112;
-	double d = input;
 	double slope = ((r1 - r0) / (d1 - d0));
 	double r = r0 + slope * (d - d0);
 	return d, r;
@@ -158,21 +155,17 @@ double mathFunctions :: DragForceEquation(double c, double p, double v, double a
 	return drag;
 }
 
-float Position :: computeDistance(const Position& pos1, const Position& pos2)
-{
-	return sqrt((pos1.getMetersX() - pos2.getMetersX()) * (pos1.getMetersX() - pos2.getMetersX()) +
-		(pos1.getMetersY() - pos2.getMetersY()) * (pos1.getMetersY() - pos2.getMetersY()));
-}
 
 int main()
 {
     // Test case up
 	cout << "What is the angle of the howitzer where 0 is up (Degrees)? " << endl;
 	mathFunctions test1;
+	Position ptest1;
 	test1.setDegrees(0.0);
 	cout << test1.getDegrees() << endl;
 	cout << "Distance:      ";
-	cout << test1.computeDistance(pos1, pos2) << "       ";
+	cout << ptest1.computeDistance(ptest1.pos1, ptest1.pos2) << "       ";
 	cout << "Hang Time:     ";
 	//cout << test1.DragForceEquation() << endl;
 

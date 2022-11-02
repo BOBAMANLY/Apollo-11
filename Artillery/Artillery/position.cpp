@@ -28,6 +28,16 @@ Position& Position::operator = (const Position& pt)
    return *this;
 }
 
+/*********************************************
+ * COMPUTE DISTANCE
+ * Find the distance between two positions
+ *********************************************/
+inline double Position :: computeDistance(const Position& pos1, const Position& pos2)
+{
+    return sqrt((pos1.getMetersX() - pos2.getMetersX()) * (pos1.getMetersX() - pos2.getMetersX()) +
+        (pos1.getMetersY() - pos2.getMetersY()) * (pos1.getMetersY() - pos2.getMetersY()));
+}
+
 
 /******************************************
  * POSITION insertion

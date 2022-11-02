@@ -57,6 +57,8 @@ public:
    }
    double getZoom() const { return metersFromPixels; }
 
+   double computeDistance(const Position& pos1, const Position& pos2);
+
 private:
    double x;                 // horizontal position
    double y;                 // vertical position
@@ -67,11 +69,7 @@ private:
  * COMPUTE DISTANCE
  * Find the distance between two positions
  *********************************************/
-inline double computeDistance(const Position& pos1, const Position& pos2)
-{
-   return sqrt((pos1.getMetersX() - pos2.getMetersX()) * (pos1.getMetersX() - pos2.getMetersX()) +
-               (pos1.getMetersY() - pos2.getMetersY()) * (pos1.getMetersY() - pos2.getMetersY()));
-}
+
 
 // stream I/O useful for debugging
 std::ostream & operator << (std::ostream & out, const Position& pt);
