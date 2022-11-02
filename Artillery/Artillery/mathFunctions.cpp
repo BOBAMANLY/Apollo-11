@@ -6,7 +6,7 @@
 #include "mathFunctions.h"
 #include "math.h"
 #include <cmath>
-#include "position.cpp"
+#include "pos.h"
 using namespace std;
 
 
@@ -141,6 +141,7 @@ double mathFunctions :: AreaOfCircle(){
 	double pi = 2 * acos(0.0);
 	double r = (154.89 / 2);
 	double area = pi * (r * r);
+	return area;
 }
 double mathFunctions :: DragForceEquation(double c, double p, double v, double a){
 	/*
@@ -162,40 +163,44 @@ int main()
 	cout << "What is the angle of the howitzer where 0 is up (Degrees)? " << endl;
 	mathFunctions test1;
 	Position ptest1;
+	Position cannonPosition;
+	cannonPosition.setMetersX(0.0);
+	cannonPosition.setMetersY(0.0);
+	Position endingPosition;
 	test1.setDegrees(0.0);
 	cout << test1.getDegrees() << endl;
 	cout << "Distance:      ";
-	cout << ptest1.computeDistance(ptest1.pos1, ptest1.pos2) << "       ";
+	//cout << ptest1.computeDistance(cannonPosition, endingPosition) << "       ";
 	cout << "Hang Time:     ";
 	//cout << test1.DragForceEquation() << endl;
 
 	// Test case high
-	cout << "What is the angle of the howitzer where 0 is up (Degrees)? " << endl;
+	cout << "\nWhat is the angle of the howitzer where 0 is up (Degrees)? " << endl;
 	mathFunctions test2;
 	test2.setDegrees(30.0);
 	cout << test2.getDegrees() << endl;
 	cout << "Distance:      ";
-	cout << test1.computeDistance(pos1, pos2) << "       ";
+	//cout << test1.computeDistance(pos1, pos2) << "       ";
 	cout << "Hang Time:     ";
 	//cout << test1.DragForceEquation() << endl;
 
 	// Test case low
-	cout << "What is the angle of the howitzer where 0 is up (Degrees)? " << endl;
+	cout << "\nWhat is the angle of the howitzer where 0 is up (Degrees)? " << endl;
 	mathFunctions test3;
 	test3.setDegrees(60.0);
 	cout << test3.getDegrees() << endl;
 	cout << "Distance:      ";
-	cout << test1.computeDistance(pos1, pos2) << "       ";
+	//cout << test1.computeDistance(pos1, pos2) << "       ";
 	cout << "Hang Time:     ";
 	//cout << test1.DragForceEquation() << endl;
 
 	// Test case backwards
-	cout << "What is the angle of the howitzer where 0 is up (Degrees)? " << endl;
+	cout << "\nWhat is the angle of the howitzer where 0 is up (Degrees)? " << endl;
 	mathFunctions test4;
 	test4.setDegrees(-45.0);
 	cout << test4.getDegrees() << endl;
 	cout << "Distance:      ";
-	cout << test1.computeDistance(pos1, pos2) << "       ";
+	//cout << test1.computeDistance(pos1, pos2) << "       ";
 	cout << "Hang Time:     ";
 	//cout << test1.DragForceEquation() << endl;
 
