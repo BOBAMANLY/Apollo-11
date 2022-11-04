@@ -156,7 +156,7 @@ double mathFunctions :: DragForceEquation(double c, double p, double v, double a
 	return drag;
 }
 
-
+/*
 int main()
 {
     // Test case up
@@ -206,3 +206,4 @@ int main()
 
 	return 0;
 }
+*/

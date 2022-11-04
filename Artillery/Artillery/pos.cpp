@@ -7,14 +7,14 @@
  *    Everything we need to know about a location on the screen.
  ************************************************************************/
 
-#include "position.h"
+#include "pos.h"
 #include <cassert>
 
 
 Position::Position(double x, double y) : x(0.0), y(0.0)
 {
-    setMetersX(x);
-    setMetersY(y);
+	setMetersX(x);
+	setMetersY(y);
 }
 
 /******************************************
@@ -23,19 +23,9 @@ Position::Position(double x, double y) : x(0.0), y(0.0)
  *****************************************/
 Position& Position::operator = (const Position& pt)
 {
-    x = pt.x;
-    y = pt.y;
-    return *this;
-}
-
-/*********************************************
- * COMPUTE DISTANCE
- * Find the distance between two positions
- *********************************************/
-inline double Position::computeDistance(const Position& pos1, const Position& pos2)
-{
-    return sqrt((pos1.getMetersX() - pos2.getMetersX()) * (pos1.getMetersX() - pos2.getMetersX()) +
-        (pos1.getMetersY() - pos2.getMetersY()) * (pos1.getMetersY() - pos2.getMetersY()));
+	x = pt.x;
+	y = pt.y;
+	return *this;
 }
 
 
@@ -45,8 +35,8 @@ inline double Position::computeDistance(const Position& pos1, const Position& po
  *****************************************/
 std::ostream& operator << (std::ostream& out, const Position& pt)
 {
-    out << "(" << pt.getMetersX() << "m , " << pt.getMetersY() << "m)";
-    return out;
+	out << "(" << pt.getMetersX() << "m , " << pt.getMetersY() << "m)";
+	return out;
 }
 
 /*******************************************
@@ -55,12 +45,12 @@ std::ostream& operator << (std::ostream& out, const Position& pt)
 ******************************************/
 std::istream& operator >> (std::istream& in, Position& pt)
 {
-    double x;
-    double y;
-    in >> x >> y;
+	double x;
+	double y;
+	in >> x >> y;
 
-    pt.setMetersX(x);
-    pt.setMetersY(y);
+	pt.setMetersX(x);
+	pt.setMetersY(y);
 
-    return in;
+	return in;
 }
