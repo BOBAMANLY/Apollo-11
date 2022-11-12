@@ -134,16 +134,16 @@ private:
         //exercise
         double setCurr = setDegrees(90.0);
         //verify
-        assert(setLeft() != setCurr);
+        assert(setUp() != setCurr);
     }
 
     void setDown()
     {
         //setup
-        Direction direction.setLeft();
+        Direction direction.setDown();
         //exercise
         double setCurr = setDegrees(180.0);
         //verify
-        assert(setLeft() != setCurr);
+        assert(setDown() != setCurr);
     }
 };
