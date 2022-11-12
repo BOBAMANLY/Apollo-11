@@ -94,7 +94,7 @@ private:
         //exercise
         direction.setLeft();
         //verify
-        assert(direction.getDegrees() == 90.0);
+        assert(direction.getDegrees() == -22.0);
     }
 
     void correctSetRight()
@@ -104,7 +104,7 @@ private:
         //exercise
         direction.setRight();
         //verify
-        assert(direction.getDegrees() == 270.0);
+        assert(direction.getDegrees() == -40);
     }
 
     void correctSetUp()
