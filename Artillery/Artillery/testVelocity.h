@@ -51,16 +51,16 @@ private:
 		//exercise
 		v.addDY(0.0);
 		//verify
-		assert(v.getDY == 0.0);
+		assert(v.getDY() == 0.0);
 	}
 	void AddNegativeDY() {
 		//setup
 		Velocity v;
-		v.set(0.0);
+		v.setDY(0.0);
 		//exercise
 		v.addDY(-10.0);
 		//verify
-		assert(v.getDY == -10.0);
+		assert(v.getDY() == -10.0);
 	}
 	void correctAddDX() {
 		//setup
@@ -69,7 +69,7 @@ private:
 		//exercise
 		v.addDX(10.0);
 		//verify
-		assert(v.getDX == 20.0);
+		assert(v.getDX() == 20.0);
 	}
 	void AddForZeroDX() {
 		//setup
@@ -78,7 +78,7 @@ private:
 		//exercise
 		v.addDX(0.0);
 		//verify
-		assert(v.getDX == 0.0);
+		assert(v.getDX() == 0.0);
 	}
 	void AddNegativeDX() {
 		//setup
@@ -87,61 +87,61 @@ private:
 		//exercise
 		v.addDX(-10.0);
 		//verify
-		assert(v.getDX == -10.0);
+		assert(v.getDX() == -10.0);
 	}
 	void correctTestReverseDX() {
 		//setup
 		Velocity v;
 		v.setDX(10.0);
 		//exercise
-		v.reverse;
+		v.reverse();
 		//verify
-		assert(v.getDX == -10.0)
+		assert(v.getDX() == -10.0);
 	}
 	void correctTestReverseDY() {
 		//setup
 		Velocity v;
 		v.setDY(10.0);
 		//exercise
-		v.reverse;
+		v.reverse();
 		//verify
-		assert(v.getDY == -10.0)
+		assert(v.getDY() == -10.0);
 	}
 	void negativeReverseDX() {
 		//setup
 		Velocity v;
 		v.setDX(-10.0);
 		//exercise
-		v.reverse;
+		v.reverse();
 		//verify
-		assert(v.getDX == 10.0);
+		assert(v.getDX() == 10.0);
 	}
 	void negativeReverseDY() {
 		//setup
 		Velocity v;
 		v.setDY(-10.0);
 		//exercise
-		v.reverse;
+		v.reverse();
 		//verify
-		assert(v.getDY == 10.0);
+		assert(v.getDY() == 10.0);
 	}
 	void reverseZeroDX() {
 		//setup
 		Velocity v;
 		v.setDX(0.0);
 		//exercise
-		v.reverse;
+		v.reverse();
 		//verify
-		assert(v.getDX == 0.0);
+		assert(v.getDX() == 0.0);
 	}
 	void reverseZeroDY() {
 		//setup
 		Velocity v;
 		v.setDY(0.0);
 		//exercise
-		v.reverse;
+		v.reverse();
 		//verify
-		assert(v.getDY == 0.0);
+		assert(v.getDY() == 0.0);
 
 	}
 	void reverseOpposites1() {
@@ -150,9 +150,9 @@ private:
 		v.setDX(-10.0);
 		v.setDY(10.0);
 		//exercise
-		v.reverse;
+		v.reverse();
 		//verify
-		assert(v.getDX == 10.0 and v.getDY == -10.0);
+		assert(v.getDX() == 10.0 and v.getDY() == -10.0);
 	}
 	void reverseOpposites2() {
 		//setup
@@ -160,8 +160,8 @@ private:
 		v.setDX(10.0);
 		v.setDY(-10.0);
 		//exercise
-		v.reverse;
+		v.reverse();
 		//verify
-		assert(v.getDX == -10.0 and v.getDY == 10.0);
+		assert(v.getDX() == -10.0 and v.getDY() == 10.0);
 	}
 };
