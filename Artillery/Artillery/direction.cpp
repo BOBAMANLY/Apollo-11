@@ -1,40 +1,42 @@
 #include "direction.h";
 #include <cmath>
 
-double direction::getDX() {
+double Direction::getDX() {
 	return dx;
 }
-double direction::getDY() {
+double Direction::getDY() {
 	return dy;
 }
-double direction::getRadians() {
+double Direction::getRadians() {
 	return radians;
 }
-double direction::getDegrees() {
+double Direction::getDegrees() {
 	double pi = 2 * acos(0.0);
 	return (360) * (radians / 2 * pi);
 }
 
-void direction::setDXDY(double dxInput, double dyInput) {
+void Direction::setDXDY(double dxInput, double dyInput) {
 	dx = dxInput;
 	dy = dyInput;
+	return dx, dy;
 }
-void direction::setDegrees(double input) {
+double Direction::setDegrees(double input) {
 	double pi = 2 * acos(0.0);
 	radians = (360) * (input / 2 * pi);
 }
-void direction::setRadians(double input) {
+void Direction::setRadians(double input) {
 	radians = input;
 }
-void direction::setDown() {
+void Direction::setDown() {
 	setDegrees(180.0);
 }
-void direction::setUp() {
+void Direction::setUp() {
 	setDegrees(0.0);
 }
-void direction::setRight() {
+void Direction::setRight() {
 	setDegrees(270.0);
 }
-void direction::setLeft() {
+void Direction::setLeft() {
 	setDegrees(90.0);
 }
+
