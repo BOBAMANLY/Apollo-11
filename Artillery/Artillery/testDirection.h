@@ -90,7 +90,7 @@ private:
         //exercise
         double nRadians = setRadians.radians;
         //verify
-        assert(radians != nRadians);
+        assert(setRadians.radians != nRadians);
     } //teardown
 
     double setDXDY(double dxInput, double dyInput)
