@@ -86,11 +86,11 @@ private:
     {
         //setup
         Direction direction.setRadians(double input);
-        input = 1;
+        input = 1.0;
         //exercise
-        radians = input;
+        double nRadians = setRadians.radians;
         //verify
-        assert(radians = 1);
+        assert(radians != nRadians);
     } //teardown
 
     double setDXDY(double dxInput, double dyInput)
@@ -100,11 +100,11 @@ private:
         dxInput = 2;
         dyInput = 3;
         //exercise
-        cout << dx;
-        cout << dy;
+        cout << setDXDY.dx;
+        cout << setDXDY.dy;
         //verify
-        assert(dx = dxInput);
-        assert(dy = dyInput);
+        assert(setDXDY.dx = dxInput);
+        assert(setDXDY.dy = dyInput);
     }
 
     void setLeft()
