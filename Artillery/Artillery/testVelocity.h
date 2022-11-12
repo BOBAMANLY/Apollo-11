@@ -21,6 +21,14 @@ public:
 		reverseZeroDY();
 		reverseOpposites1();
 		reverseOpposites2();
+		getDrirectionUp();
+		getDirecttionRight();
+		getDirectionUpRight();
+		getDirectionLeft();
+		getDirectionDown();
+		addVelUpRight();
+		addVelDownRight();
+
 	}
 private:
 	// Write unit tests using this format.
@@ -163,5 +171,81 @@ private:
 		v.reverse;
 		//verify
 		assert(v.getDX == -10.0 and v.getDY == 10.0);
+	}
+	void getDrirectionUp() {
+		//setup
+		Velocity v;
+		v.setDX(0.0);
+		v.setDY(1.0);
+		//exercise
+		v.setDirection(v.getDX, v.getDY);
+		//verify
+		assert(v.getDirection == 0);
+	}
+	void getDirecttionRight() {
+		//setup
+		Velocity v;
+		v.setDX(1.0);
+		v.setDY(1.0);
+		//exercise
+		v.setDirection(v.getDX, v.getDY);
+		//verify
+		assert(v.getDirection == pi / 2);
+	}
+	void getDirectionUpRight() {
+		//setup
+		Velocity v;
+		v.setDX(1.0);
+		v.setDY(1.0);
+		//exercise
+		v.setDirection(v.getDX, v.getDY);
+		//verify
+		assert(v.getDirection == pi / 4);
+	}
+	void getDirectionLeft() {
+		//setup
+		Velocity v;
+		v.setDX(-1.0);
+		v.setDY(0.0);
+		//exercise
+		v.setDirection(v.getDX, v.getDY);
+		//verify
+		assert(v.getDirection == -pi / 2);
+	}
+	void getDirectionDown() {
+		//setup
+		Velocity v;
+		v.setDX(0.0);
+		v.setDY(-1.0);
+		//exercise
+		v.setDirection(v.getDX, v.getDY);
+		//verify
+		assert(v.getDirection == pi);
+	}
+	void addVelUpRight() {
+		//setup
+		Velocity v;
+		v.setDX(0.0);
+		v.setDY(1.0);
+		//exercise
+		v.addDX(0.0);
+		v.addDY(1.0);
+		v.addV(v.setDX, v.setDY);
+		//verify
+		assert(*this == (1.0, 1.0);
+		//teardown
+		delete v
+	}
+	void addVelDownRight() {
+		//setup
+		Velocity v;
+		v.setDX(4.0);
+		v.setDY(0.0);
+		//exercise
+		v.addDX(0.0);
+		v.addDY(-3.0);
+		v.addV(v.setDX, v.setDY);
+		//verify
+		assert(*this == (4.0, -3.0);
 	}
 };
