@@ -39,6 +39,9 @@ double mathFunctions :: getDistance() {
 double mathFunctions :: getHangtime() {
 	return hangtime;
 }
+double mathFunctions::getRadians() {
+	return radians;
+}
 
 // Equations
 void mathFunctions :: convertToDegrees(double input)
@@ -102,10 +105,10 @@ double mathFunctions :: pythagoreanTheorem(double dx, double dy) {
 		dy = vertical component of speed (m/s)
 		s = overall speed (m/s)
 	*/
-	// dx^2 + dy^2 = s2
-	double speed = (dx * dx) + (dy * dy);
+	// dx^2 + dy^2 = s^2
+	double speed = sqrt((dx * dx) + (dy * dy));
 
-	return speed, dx;
+	return speed;
 }
 double mathFunctions :: interpoleration(double d0, double r0, double d1, double r1, double d) {
 
@@ -132,14 +135,14 @@ double mathFunctions :: Force(double acceleration = 827){
 	double force = 46.7 * acceleration;
 	return force;
 }
-double mathFunctions :: AreaOfCircle(){
+double mathFunctions :: AreaOfCircle(double radius){
 	/*
 	a = area of a circle (m2)
 	r = radius of a circle
 	*/
 	//a = π r 2
 	double pi = 2 * acos(0.0);
-	double r = (154.89 / 2);
+	double r = radius;
 	double area = pi * (r * r);
 	return area;
 }

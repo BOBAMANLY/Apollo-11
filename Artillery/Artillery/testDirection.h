@@ -27,18 +27,14 @@ class TestDirection
 public:
     void run()
     {
-        Direction().setDXDY(double dxInput, double dyInput);
         defaultConstructor();
-        nonDefaultConstructor();
-
-        Direction().setDegrees(double input);
-        Direction().setRadians(double input);
-        Direction().setDXDY(double dxInput, double dyInput);
-        Direction().setLeft();
-        Direction().setRight();
-        Direction().setUp();
-        Direction().setDown();
-
+        correctSetDegrees();
+        correctSetRadians();
+        correctSetDXDY();
+        correctSetLeft();
+        correctSetRight();
+        correctSetUp();
+        correctSetDown();
     }
 
 private:
@@ -54,96 +50,80 @@ private:
        // exercise
         Direction direction;
         // verify
-        assert(radians == 0.0);
+        assert(direction.getRadians() == 0.0);
     }  // teardown
 
-    void nonDefaultConstructor() const
-    {  // setup
-       // exercise
-        Direction getDX(20);
-        Direction getDY(20);
-        // verify
-        assert(dx = 20);
-        assert(dy = 20);
-        // teardown
-        dx == NULL;
-        dy == NULL;
 
+    double correctSetDegrees()
+    {  // setup
+        Direction direction;
+        // exercise
+        direction.setDegrees(10);
+        // verify
+        assert(direction.getDegrees() == 10);
+        // teardown
     }
 
-
-    double setDegrees(input)
-    {  // setup
-        Direction direction.setDegrees(double input);
-        input = 2;
-        // exercise
-        radians = (360) * (input / 2 * pi);
-        // verify
-        assert(radians != 114.59);
-    }  // teardown
-
-    double setRadians(input)
+    double correctSetRadians()
     {
         //setup
-        Direction direction.setRadians(double input);
-        input = 1.0;
+        Direction direction;
         //exercise
-        double nRadians = setRadians.radians;
+        direction.setRadians(1.0);
         //verify
-        assert(setRadians.radians != nRadians);
+        assert(direction.getRadians() == 1.0);
     } //teardown
 
-    double setDXDY(double dxInput, double dyInput)
+    double correctSetDXDY()
     {
         //setup
-        Direction direction(setDXDY(dxInput, dyInput));
-        dxInput = 2;
-        dyInput = 3;
+        Direction direction;
+        double dxInput = 2.0;
+        double dyInput = 3.0;
         //exercise
-        cout << setDXDY.dx;
-        cout << setDXDY.dy;
+        direction.setDXDY(dxInput, dyInput);
         //verify
-        assert(setDXDY.dx = dxInput);
-        assert(setDXDY.dy = dyInput);
+        assert(direction.getDX() == dxInput);
+        assert(direction.getDY() == dyInput);
     }
 
-    void setLeft()
+    void correctSetLeft()
     {
         //setup
-        Direction direction.setLeft();
+        Direction direction;
         //exercise
-        double setCurr = setDegrees(360.0);
+        direction.setLeft();
         //verify
-        assert(setLeft() != setCurr);
+        assert(direction.getDegrees() == 90.0);
     }
 
-    void setRight()
+    void correctSetRight()
     {
         //setup
-        Direction direction.setRight();
+        Direction direction;
         //exercise
-        double setCurr = setDegrees(0.0);
+        direction.setRight();
         //verify
-        assert(setRight() != setCurr);
+        assert(direction.getDegrees() == 270.0);
     }
 
-    void setUp()
+    void correctSetUp()
     {
         //setup
-        Direction direction.setUp();
+        Direction direction;
         //exercise
-        double setCurr = setDegrees(90.0);
+        direction.setUp();
         //verify
-        assert(setUp() != setCurr);
+        assert(direction.getDegrees() == 0.0);
     }
 
-    void setDown()
+    void correctSetDown()
     {
         //setup
-        Direction direction.setDown();
+        Direction direction;
         //exercise
-        double setCurr = setDegrees(180.0);
+        direction.setDown();
         //verify
-        assert(setDown() != setCurr);
+        assert(direction.getDegrees() == 180.0);
     }
 };

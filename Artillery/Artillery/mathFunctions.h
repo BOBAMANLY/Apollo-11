@@ -17,6 +17,7 @@ public:
 
 	// Getters
 	double getDegrees();
+	double getRadians();
 	double getDistance();
 	double getHangtime();
 
@@ -24,7 +25,7 @@ public:
 	void convertToDegrees(double input);
 	void convertToRadians(double input);
 	double DragForceEquation(double dragco, double density, double velocity, double surfaceArea);
-	double AreaOfCircle();
+	double AreaOfCircle(double radius);
 	double Force(double acceleration);
 	double verticalComponentSpeed(double speed, double direction);
 	double HorizontalComponentSpeed(double speed, double direction);

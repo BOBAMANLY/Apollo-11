@@ -18,9 +18,8 @@ double Direction::getDegrees() {
 void Direction::setDXDY(double dxInput, double dyInput) {
 	dx = dxInput;
 	dy = dyInput;
-	return dx, dy;
 }
-double Direction::setDegrees(double input) {
+void Direction::setDegrees(double input) {
 	double pi = 2 * acos(0.0);
 	radians = (360) * (input / 2 * pi);
 }
