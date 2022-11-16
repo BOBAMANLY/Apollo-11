@@ -32,13 +32,13 @@ Position projectile::getPosition() {
 	return flightpath.back();
 }
 double projectile::getFlightTime() {
-
+	return 0.0;
 }
 double projectile::getFlightDistance() {
-
+	return 0.0;
 }
 double projectile::getSpeed() {
-
+	return 0.0;
 }
 auto projectile::getCurrentTime() {
 	auto time = std::chrono::system_clock::now();

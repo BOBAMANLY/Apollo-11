@@ -1,3 +1,4 @@
+// Howitzer class functions
 #include "howitzer.h";
 
 double howitzer::getMuzzleVelocity() {

@@ -11,13 +11,13 @@ private:
 	double degrees;
 	double radians;
 public:
-	friend TestDirection;
+	//friend TestDirection;
 
 	// Constructors/assignment operators
 	Direction() : radians(0.0) {}
 	Direction(double degrees) : radians(0.0)
 	{
-		radians = getRadians(input);
+		radians = getRadians();
 	}
 	Direction(const Direction& rhs) : radians(rhs.radians) {}
 	Direction& operator = (const Direction& rhs)

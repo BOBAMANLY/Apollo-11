@@ -1,6 +1,6 @@
 #pragma once
 
-
+/*
 class Velocity {
 public:
 	//Constructors and assignment operators
@@ -59,4 +59,4 @@ public:
 		dx *= -1.0;
 		dy *= -1.0;
 	}
-};
+};*/

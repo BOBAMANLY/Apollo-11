@@ -65,6 +65,7 @@ void mathFunctions :: convertToRadians(double input) {
 	// 	r / 2 π = d / 360
 	double pi = 2 * acos(0.0);
 	double output = (360) * (input / 2 * pi);
+	//cout << output << endl;
 	setRadians(output);
 }
 double mathFunctions :: verticalComponentSpeed(double speed, double direction) {
@@ -107,7 +108,8 @@ double mathFunctions :: pythagoreanTheorem(double dx, double dy) {
 	*/
 	// dx^2 + dy^2 = s^2
 	double speed = sqrt((dx * dx) + (dy * dy));
-
+	if (dx < 0 or dy < 0)
+		return NULL;
 	return speed;
 }
 double mathFunctions :: interpoleration(double d0, double r0, double d1, double r1, double d) {
@@ -121,9 +123,13 @@ double mathFunctions :: interpoleration(double d0, double r0, double d1, double 
 	// (r - r0) / (d - d0) = (r1 - r0) / (d1 - d0)
 	// for finding Density at altitude
 	//(r - 1.225)/(d - 0) = (1.112 - 1.225) / (1000 - 0)
-	double slope = ((r1 - r0) / (d1 - d0));
+	double top = (r1 - r0);
+	double bottom = (d1 - d0);
+	if (bottom == 0)
+		return NULL;
+	double slope = (top / bottom);
 	double r = r0 + slope * (d - d0);
-	return d, r;
+	return r;
 }
 double mathFunctions :: Force(double acceleration = 827){
 	/*
@@ -144,6 +150,8 @@ double mathFunctions :: AreaOfCircle(double radius){
 	double pi = 2 * acos(0.0);
 	double r = radius;
 	double area = pi * (r * r);
+	if (r < 0)
+		return NULL;
 	return area;
 }
 double mathFunctions :: DragForceEquation(double c, double p, double v, double a){

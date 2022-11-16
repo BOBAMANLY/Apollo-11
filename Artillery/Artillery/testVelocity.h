@@ -234,7 +234,7 @@ private:
 		//verify
 		assert(*this == (1.0, 1.0);
 		//teardown
-		delete v
+		delete v;
 	}
 	void addVelDownRight() {
 		//setup

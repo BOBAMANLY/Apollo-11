@@ -8,8 +8,9 @@
  ************************************************************************/
 
 #include "test.h"
-#include "testPosition.h"
-#include "testGround.h"
+//#include "testDirection.h";
+#include "testMathFunctions.h";
+//#include "testVelocity.h";
 
  /*****************************************************************
   * TEST RUNNER
@@ -17,6 +18,8 @@
   ****************************************************************/
 void testRunner()
 {
-	TestPosition().run();
-	TestGround().run();
+	testMathFunctions().run();
+	//testDirection().run();
+	//testVelocity().run();
+
 }

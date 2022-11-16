@@ -1,4 +1,4 @@
-
+/*
 #include "velocity.h";
 
 double Velocity::getDX() {
@@ -18,6 +18,6 @@ void Velocity::addDX(double DX) {}
 void Velocity::addDY(double DY) {}
 void Velocity::reverse{};
 void Velocity::setDxDy(double dx, double dy){}
-void Velocity::setSpeed(double speed){}
+void Velocity::setSpeed(double speed){}*/
 
 
