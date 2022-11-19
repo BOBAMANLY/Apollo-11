@@ -2,6 +2,7 @@
 #include "velocity.h";
 #include "direction.cpp"
 #include <cassert>
+#include "mathFunctions.h"
 
 class testVelocity {
 public:
@@ -23,11 +24,9 @@ public:
 		reverseOpposites2();
 		getDrirectionUp();
 		getDirecttionRight();
-		getDirectionUpRight();
 		getDirectionLeft();
 		getDirectionDown();
 		addVelUpRight();
-		addVelDownRight();
 
 	}
 private:
@@ -97,6 +96,7 @@ private:
 		//verify
 		assert(v.getDX() == -10.0);
 	}
+
 	void correctTestReverseDX() {
 		//setup
 		Velocity v;
@@ -175,52 +175,46 @@ private:
 	void getDrirectionUp() {
 		//setup
 		Velocity v;
+		mathFunctions math;
 		v.setDX(0.0);
 		v.setDY(1.0);
 		//exercise
-		v.setDirection(v.getDX, v.getDY);
+		double result = math.AngleFromComponents(v.getDX, v.getDY);
 		//verify
-		assert(v.getDirection == 0);
+		assert(result == 0);
 	}
 	void getDirecttionRight() {
 		//setup
 		Velocity v;
+		mathFunctions math;
 		v.setDX(1.0);
 		v.setDY(1.0);
 		//exercise
-		v.setDirection(v.getDX, v.getDY);
+		double result = math.AngleFromComponents(v.getDX, v.getDY);
 		//verify
-		assert(v.getDirection == pi / 2);
-	}
-	void getDirectionUpRight() {
-		//setup
-		Velocity v;
-		v.setDX(1.0);
-		v.setDY(1.0);
-		//exercise
-		v.setDirection(v.getDX, v.getDY);
-		//verify
-		assert(v.getDirection == pi / 4);
+		assert(result == pi / 2);
 	}
 	void getDirectionLeft() {
 		//setup
 		Velocity v;
+		mathFunctions math;
 		v.setDX(-1.0);
 		v.setDY(0.0);
 		//exercise
-		v.setDirection(v.getDX, v.getDY);
+		double result = math.AngleFromComponents(v.getDX, v.getDY);
 		//verify
-		assert(v.getDirection == -pi / 2);
+		assert(result == -pi / 2);
 	}
 	void getDirectionDown() {
 		//setup
 		Velocity v;
+		mathFunctions math;
 		v.setDX(0.0);
 		v.setDY(-1.0);
 		//exercise
-		v.setDirection(v.getDX, v.getDY);
+		double result = math.AngleFromComponents(v.getDX, v.getDY);
 		//verify
-		assert(v.getDirection == pi);
+		assert(result == pi);
 	}
 	void addVelUpRight() {
 		//setup
@@ -234,18 +228,5 @@ private:
 		//verify
 		assert(*this == (1.0, 1.0);
 		//teardown
-		delete v;
-	}
-	void addVelDownRight() {
-		//setup
-		Velocity v;
-		v.setDX(4.0);
-		v.setDY(0.0);
-		//exercise
-		v.addDX(0.0);
-		v.addDY(-3.0);
-		v.addV(v.setDX, v.setDY);
-		//verify
-		assert(*this == (4.0, -3.0);
 	}
 };
