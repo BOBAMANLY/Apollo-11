@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "mathFunctions.h";
+#include "mathFunctions.h"
 #include <cassert>
 
 using namespace std;
@@ -9,6 +9,7 @@ using namespace std;
 class testMathFunctions {
 public:
 	void run() {
+		// Put the function call of each unit test here:
 		toRadiansConversionCorrect();
 		toDegreesConversionCorrect();
 		IntInputtoRadiansConversionCorrect();
@@ -30,7 +31,7 @@ public:
 		correctHorizontalComponent();
 		negativeSpeedHorizontalComponent();
 		negativeDirectionHorizontalComponent();
-		correctAngleFromComponents();
+		//correctAngleFromComponents();
 		NegativeAngleFromComponents();
 		ZeroAngleFromComponents();
 		correctPythagoreanTheorem();
@@ -253,14 +254,14 @@ private:
 		assert(round(func.HorizontalComponentSpeed(10, -10)) == round(10.544));
 		// Teardown
 	}
-	void correctAngleFromComponents() {
+	//void correctAngleFromComponents() {
 		// Setup
-		mathFunctions func;
+		//mathFunctions func;
 		// Exercise
 		// Verify
 		//assert(func.AngleFromComponents() == );
 		// Teardown
-	}
+	//}
 	void NegativeAngleFromComponents() {
 		// Setup
 		mathFunctions func;

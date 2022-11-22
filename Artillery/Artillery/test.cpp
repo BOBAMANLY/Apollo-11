@@ -8,9 +8,9 @@
  ************************************************************************/
 
 #include "test.h"
-//#include "testDirection.h";
-#include "testMathFunctions.h";
-#include "testVelocity.h";
+//#include "testDirection.h"
+#include "testMathFunctions.h"
+#include "testVelocity.h"
 
  /*****************************************************************
   * TEST RUNNER
