@@ -1,8 +1,9 @@
 #pragma once
-#include "velocity.h";
-#include "direction.cpp"
+#include "velocity.h"
 #include <cassert>
 #include "mathFunctions.h"
+
+using namespace std;
 
 class testVelocity {
 public:
@@ -26,8 +27,6 @@ public:
 		getDirecttionRight();
 		getDirectionLeft();
 		getDirectionDown();
-		addVelUpRight();
-
 	}
 private:
 	// Write unit tests using this format.
@@ -179,7 +178,9 @@ private:
 		v.setDX(0.0);
 		v.setDY(1.0);
 		//exercise
-		double result = math.AngleFromComponents(v.getDX, v.getDY);
+		double dx = v.getDX();
+		double dy = v.getDY();
+		double result = math.AngleFromComponents(dx, dy);
 		//verify
 		assert(result == 0);
 	}
@@ -190,9 +191,11 @@ private:
 		v.setDX(1.0);
 		v.setDY(1.0);
 		//exercise
-		double result = math.AngleFromComponents(v.getDX, v.getDY);
+		double dx = v.getDX();
+		double dy = v.getDY();
+		double result = math.AngleFromComponents(dx, dy);
 		//verify
-		assert(result == pi / 2);
+		assert(result == (2 * acos(0.0)) / 2);
 	}
 	void getDirectionLeft() {
 		//setup
@@ -201,9 +204,11 @@ private:
 		v.setDX(-1.0);
 		v.setDY(0.0);
 		//exercise
-		double result = math.AngleFromComponents(v.getDX, v.getDY);
+		double dx = v.getDX();
+		double dy = v.getDY();
+		double result = math.AngleFromComponents(dx, dy);
 		//verify
-		assert(result == -pi / 2);
+		assert(result == -(2 * acos(0.0)) / 2);
 	}
 	void getDirectionDown() {
 		//setup
@@ -212,21 +217,10 @@ private:
 		v.setDX(0.0);
 		v.setDY(-1.0);
 		//exercise
-		double result = math.AngleFromComponents(v.getDX, v.getDY);
+		double dx = v.getDX();
+		double dy = v.getDY();
+		double result = math.AngleFromComponents(dx, dy);
 		//verify
-		assert(result == pi);
-	}
-	void addVelUpRight() {
-		//setup
-		Velocity v;
-		v.setDX(0.0);
-		v.setDY(1.0);
-		//exercise
-		v.addDX(0.0);
-		v.addDY(1.0);
-		v.addV(v.setDX, v.setDY);
-		//verify
-		assert(*this == (1.0, 1.0);
-		//teardown
+		assert(result == 2 * acos(0.0));
 	}
 };
