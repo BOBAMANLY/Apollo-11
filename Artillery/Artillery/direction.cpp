@@ -1,4 +1,5 @@
-#include "direction.h";
+
+#include "direction.h"
 #include <cmath>
 
 double Direction::getDX() {
@@ -23,8 +24,19 @@ void Direction::setDegrees(double input) {
 	double pi = 2 * acos(0.0);
 	radians = (360) * (input / 2 * pi);
 }
-void Direction::setRadians(double input) {
-	radians = input;
+void Direction::setRadians(double rhs) {
+	double pi = 2 * acos(0.0);
+	if (rhs >= 0.0)
+	{
+		double rotations = (double)(int)((pi + rhs) / (pi * 2.0));
+		rhs -= rotations * (pi * 2.0);
+	}
+	else
+	{
+		double rotations = -(double)(int)((rhs - pi) / (pi * 2.0));
+		rhs += rotations * (pi * 2.0);
+	}
+	radians = rhs;
 }
 void Direction::setDown() {
 	setDegrees(180.0);
@@ -39,3 +51,13 @@ void Direction::setLeft() {
 	setDegrees(90.0);
 }
 
+void Direction::reverse()
+{
+	double pi = 2 * acos(0.0);
+	setRadians(radians+ pi);
+}
+
+void Direction::rotate(double amountRadians)
+{
+	setRadians(amountRadians + radians);
+}

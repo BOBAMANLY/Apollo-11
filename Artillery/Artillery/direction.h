@@ -39,4 +39,6 @@ public:
 	void setUp();
 	void setRight();
 	void setLeft();
+	void reverse();
+	void rotate(double amountRadians);
 };

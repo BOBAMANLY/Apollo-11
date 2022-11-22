@@ -35,6 +35,12 @@ public:
         correctSetRight();
         correctSetUp();
         correctSetDown();
+        correctReverse();
+        correctOneRound();
+        correctNegative();
+        correctLotsaLaps();
+        correctRotateNone();
+        correctRotate180();
     }
 
 private:
@@ -125,5 +131,65 @@ private:
         direction.setDown();
         //verify
         assert(direction.getDegrees() == 180.0);
+    }
+
+    void correctReverse()
+    {
+        //setup
+        Direction direction(90);
+        //exercise
+        direction.reverse;
+        //verify
+        assert(closeEnough(direction.radians, -(2 * acos(0.0)), 0.001));
+    }
+
+    void correctOneRound()
+    {
+        //setup
+        Direction direction;
+        //exercise
+        direction.setRadians(0.4 + (acos(0.0) * 2.0));
+        //verify
+        assert(closeEnough(direction.radians, 0.40001, 0.399));
+    }
+
+    void correctNegative()
+    {
+        //setup
+        Direction direction;
+        //exercise
+        direction.setRadians(-0.34);
+        //verify
+        assert(direction.getRadians() == -0.34);
+    }
+
+    void correctLotsaLaps()
+    {
+        //setup
+        Direction direction;
+        //exercise
+        direction.setRadians(0.1 + (2.0 * acos(0.0) * 7.0));
+        //verify
+        assert(direction.getRadians() >= 0.0999 && direction.getRadians() <= 0.1001);
+    }
+
+    void correctRotateNone()
+    {
+        //setup
+        Direction direction;
+        //exercise
+        direction.rotate(0.0);
+        //verify
+        assert(direction.getRadians == 0.0);
+    }
+
+    void correctRotate180()
+    {
+        //setup
+        Direction direction;
+        //exercise
+        direction.rotate(180);
+        //verify
+        assert(direction.getRadians == 180.0);
     }
 };
