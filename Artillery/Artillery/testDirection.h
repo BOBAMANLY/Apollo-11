@@ -12,7 +12,6 @@
 
 #include <iostream>
 #include "direction.h"
-#include "direction.cpp"
 #include <cassert>
 #include <cmath>
 
@@ -60,7 +59,7 @@ private:
     }  // teardown
 
 
-    double correctSetDegrees()
+    void correctSetDegrees()
     {  // setup
         Direction direction;
         // exercise
@@ -70,7 +69,7 @@ private:
         // teardown
     }
 
-    double correctSetRadians()
+    void correctSetRadians()
     {
         //setup
         Direction direction;
@@ -80,7 +79,7 @@ private:
         assert(direction.getRadians() == 1.0);
     } //teardown
 
-    double correctSetDXDY()
+    void correctSetDXDY()
     {
         //setup
         Direction direction;
@@ -136,11 +135,12 @@ private:
     void correctReverse()
     {
         //setup
-        Direction direction(90);
+        Direction direction;
         //exercise
-        direction.reverse;
+        direction.setDegrees(90.0);
+        direction.reverse();
         //verify
-        assert(closeEnough(direction.radians, -(2 * acos(0.0)), 0.001));
+        assert(closeEnough(direction.getRadians(), -(2 * acos(0.0)), 0.001));
     }
 
     void correctOneRound()
@@ -150,7 +150,7 @@ private:
         //exercise
         direction.setRadians(0.4 + (acos(0.0) * 2.0));
         //verify
-        assert(closeEnough(direction.radians, 0.40001, 0.399));
+        assert(closeEnough(direction.getRadians(), 0.40001, 0.399));
     }
 
     void correctNegative()
@@ -180,7 +180,7 @@ private:
         //exercise
         direction.rotate(0.0);
         //verify
-        assert(direction.getRadians == 0.0);
+        assert(direction.getRadians() == 0.0);
     }
 
     void correctRotate180()
@@ -190,6 +190,6 @@ private:
         //exercise
         direction.rotate(180);
         //verify
-        assert(direction.getRadians == 180.0);
+        assert(direction.getRadians() == 180.0);
     }
 };

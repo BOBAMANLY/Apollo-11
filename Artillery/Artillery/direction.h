@@ -14,17 +14,16 @@ public:
 	//friend TestDirection;
 
 	// Constructors/assignment operators
-	Direction() : radians(0.0) {}
-	Direction(double degrees) : radians(0.0)
-	{
-		radians = getRadians();
-	}
-	Direction(const Direction& rhs) : radians(rhs.radians) {}
-	Direction& operator = (const Direction& rhs)
-	{
-		radians = rhs.radians;
-		return *this;
-	}
+	//Direction(double degrees) : radians(0.0)
+	//{
+	//	radians = getRadians();
+	//}
+	//Direction(const Direction& rhs) : radians(rhs.radians) {}
+	//Direction& operator = (const Direction& rhs)
+	//{
+	//	radians = rhs.radians;
+	//	return *this;
+	//}
 	// Getters
 	double getDX();
 	double getDY();
@@ -33,12 +32,12 @@ public:
 
 	// Setters
 	void setDXDY(double dxInput, double dyInput);
-	void setDegrees(double rhs);
-	void setRadians(double rhs);
+	void setDegrees(double input);
+	void setRadians(double input);
 	void setDown();
 	void setUp();
 	void setRight();
 	void setLeft();
 	void reverse();
-	void rotate(double amountRadians);
+	void rotate(double input);
 };

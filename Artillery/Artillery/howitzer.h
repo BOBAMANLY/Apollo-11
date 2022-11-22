@@ -1,6 +1,6 @@
 #pragma once
-#include "pos.h";
-#include "direction.h";
+#include "pos.h"
+#include "direction.h"
 
 
 class howitzer {

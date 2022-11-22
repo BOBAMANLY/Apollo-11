@@ -1,5 +1,5 @@
 // Howitzer class functions
-#include "howitzer.h";
+#include "howitzer.h"
 
 double howitzer::getMuzzleVelocity() {
 	return muzzleVelocity;

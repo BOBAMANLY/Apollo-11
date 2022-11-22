@@ -24,20 +24,11 @@ void Direction::setDegrees(double input) {
 	double pi = 2 * acos(0.0);
 	radians = (360) * (input / 2 * pi);
 }
-void Direction::setRadians(double rhs) {
+void Direction::setRadians(double input) {
 	double pi = 2 * acos(0.0);
-	if (rhs >= 0.0)
-	{
-		double rotations = (double)(int)((pi + rhs) / (pi * 2.0));
-		rhs -= rotations * (pi * 2.0);
-	}
-	else
-	{
-		double rotations = -(double)(int)((rhs - pi) / (pi * 2.0));
-		rhs += rotations * (pi * 2.0);
-	}
-	radians = rhs;
+	radians = input;
 }
+
 void Direction::setDown() {
 	setDegrees(180.0);
 }
@@ -54,10 +45,21 @@ void Direction::setLeft() {
 void Direction::reverse()
 {
 	double pi = 2 * acos(0.0);
-	setRadians(radians+ pi);
+	setRadians(radians + pi);
 }
 
-void Direction::rotate(double amountRadians)
+void Direction::rotate(double input)
 {
-	setRadians(amountRadians + radians);
+	double pi = 2 * acos(0.0);
+	setRadians(input + radians);
+	if (input >= 0.0)
+	{
+		double rotations = (double)(int)((pi + input) / (pi * 2.0));
+		input -= rotations * (pi * 2.0);
+	}
+	else
+	{
+		double rotations = -(double)(int)((input - pi) / (pi * 2.0));
+		input += rotations * (pi * 2.0);
+	}
 }

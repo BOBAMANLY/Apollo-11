@@ -8,7 +8,7 @@
  ************************************************************************/
 
 #include "test.h"
-//#include "testDirection.h"
+#include "testDirection.h"
 #include "testMathFunctions.h"
 #include "testVelocity.h"
 
@@ -19,7 +19,7 @@
 void testRunner()
 {
 	testMathFunctions().run();
-	//testDirection().run();
+	TestDirection().run();
 	testVelocity().run();
 
 }
