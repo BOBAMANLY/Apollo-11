@@ -40,6 +40,7 @@ public:
         correctLotsaLaps();
         correctRotateNone();
         correctRotate180();
+        passed();
     }
 
 private:
@@ -198,5 +199,8 @@ private:
         //verify
         assert(direction.getRadians() >= -2.213 && direction.getRadians() <= -2.211);
     }
-    cout << "All Direction tests passed!";
+    void passed()
+    {
+        cout << "All Direction tests passed!" << endl;
+    }
 };
