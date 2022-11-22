@@ -57,16 +57,16 @@ double Direction::reverse()
 void Direction::rotate(double input)
 {
 	double pi = 2 * acos(0.0);
-	radians = input * (pi / 180);
-	if (radians >= 0.0)
+	double newInput;
+	if (input >= 0.0)
 	{
 		double rotations = (double)(int)((pi + input) / (pi * 2.0));
-		radians -= rotations * (pi * 2.0);
+		newInput = input -= rotations * (pi * 2.0);
 	}
 	else
 	{
 		double rotations = -(double)(int)((input - pi) / (pi * 2.0));
-		radians += rotations * (pi * 2.0);
+		newInput = input += rotations * (pi * 2.0);
 	}
-
+	radians = newInput;
 }

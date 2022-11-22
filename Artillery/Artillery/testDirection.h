@@ -56,7 +56,6 @@ private:
         Direction direction;
         direction.setRadians(0.0);
         // verify
-        cout << direction.getRadians() << endl;
         assert(direction.getRadians() == 0.0);
     }  // teardown
 
@@ -67,7 +66,6 @@ private:
         // exercise
         direction.setDegrees(2.0);
         // verify
-        cout << direction.getDegrees() << endl;
         assert(round(direction.getDegrees()) == round(114.592));
         // teardown
     }
@@ -107,7 +105,6 @@ private:
         //exercise
         direction.setLeft();
         //verify
-        cout << direction.getDegrees() << endl;
         assert(round(direction.getDegrees()) == round(90.0));
     }
 
@@ -118,7 +115,6 @@ private:
         //exercise
         direction.setRight();
         //verify
-        cout << direction.getDegrees() << endl;
         assert(round(direction.getDegrees()) == round(270));
     }
 
@@ -129,7 +125,6 @@ private:
         //exercise
         direction.setUp();
         //verify
-        cout << direction.getDegrees() << endl;
         assert(direction.getDegrees() == 0.0);
     }
 
@@ -140,7 +135,6 @@ private:
         //exercise
         direction.setDown();
         //verify
-        cout << direction.getDegrees() << endl;
         assert(round(direction.getDegrees()) == round(180.0));
     }
 
@@ -152,7 +146,6 @@ private:
         direction.setRadians(90.0);
         direction.reverse();
         //verify
-        cout << direction.getRadians() << endl;
         assert(closeEnough(direction.getRadians(), 1 * acos(0.0), .01));
     }
 
@@ -163,7 +156,6 @@ private:
         //exercise
         direction.setRadians(0.4 + (acos(0.0) * 2.0));
         //verify
-        cout << direction.getRadians() << endl;
         assert(closeEnough(direction.getRadians(), 0.40001, 0.399));
     }
 
@@ -174,7 +166,6 @@ private:
         //exercise
         direction.setRadians(-270);
         //verify
-        cout << direction.getRadians() << endl;
         assert(round(direction.getRadians()) == round(-4.71));
     }
 
@@ -185,7 +176,6 @@ private:
         //exercise
         direction.setRadians(0.1 + (acos(0.0)) * 7.0);
         //verify
-        cout << direction.getRadians() << endl;
         assert(direction.getRadians() >= 0.192 && direction.getRadians() <= 0.194);
     }
 
@@ -196,7 +186,6 @@ private:
         //exercise
         direction.rotate(0.0);
         //verify
-        cout << direction.getRadians() << endl;
         assert(direction.getRadians() == 0.0);
     }
 
@@ -207,7 +196,7 @@ private:
         //exercise
         direction.rotate(180);
         //verify
-        cout << direction.getRadians() << endl;
-        assert(direction.getRadians() == -1 * round(180.0));
+        assert(direction.getRadians() >= -2.213 && direction.getRadians() <= -2.211);
     }
+    cout << "All Direction tests passed!"
 };
