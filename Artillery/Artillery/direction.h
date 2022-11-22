@@ -38,6 +38,8 @@ public:
 	void setUp();
 	void setRight();
 	void setLeft();
-	void reverse();
+
+	// Operations
+	double reverse();
 	void rotate(double input);
 };

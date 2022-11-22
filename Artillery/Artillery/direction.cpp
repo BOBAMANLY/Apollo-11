@@ -47,24 +47,26 @@ void Direction::setLeft() {
 	setDegrees(1.5708);
 }
 
-void Direction::reverse()
+double Direction::reverse()
 {
 	double pi = 2 * acos(0.0);
-	setRadians(radians + pi);
+	double newRads = radians + pi;
+	return newRads;
 }
 
 void Direction::rotate(double input)
 {
 	double pi = 2 * acos(0.0);
-	setRadians(input + radians);
-	if (input >= 0.0)
+	radians = input * (pi / 180);
+	if (radians >= 0.0)
 	{
 		double rotations = (double)(int)((pi + input) / (pi * 2.0));
-		input -= rotations * (pi * 2.0);
+		radians -= rotations * (pi * 2.0);
 	}
 	else
 	{
 		double rotations = -(double)(int)((input - pi) / (pi * 2.0));
-		input += rotations * (pi * 2.0);
+		radians += rotations * (pi * 2.0);
 	}
+
 }

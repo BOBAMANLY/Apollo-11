@@ -148,13 +148,12 @@ private:
     {
         //setup
         Direction direction;
-        double pi = 2 * acos(0.0);
         //exercise
-        direction.setDegrees(90.0);
+        direction.setRadians(90.0);
         direction.reverse();
         //verify
         cout << direction.getRadians() << endl;
-        assert(closeEnough(direction.getRadians(), -pi, .001));
+        assert(closeEnough(direction.getRadians(), 1 * acos(0.0), .01));
     }
 
     void correctOneRound()
@@ -173,10 +172,10 @@ private:
         //setup
         Direction direction;
         //exercise
-        direction.setRadians(-0.34);
+        direction.setRadians(-270);
         //verify
         cout << direction.getRadians() << endl;
-        assert(direction.getRadians() == -0.34);
+        assert(round(direction.getRadians()) == round(-4.71));
     }
 
     void correctLotsaLaps()
@@ -184,10 +183,10 @@ private:
         //setup
         Direction direction;
         //exercise
-        direction.setRadians(0.1 + (2.0 * acos(0.0) * 7.0));
+        direction.setRadians(0.1 + (acos(0.0)) * 7.0);
         //verify
         cout << direction.getRadians() << endl;
-        assert(direction.getRadians() >= 0.0999 && direction.getRadians() <= 0.1001);
+        assert(direction.getRadians() >= 0.192 && direction.getRadians() <= 0.194);
     }
 
     void correctRotateNone()
@@ -209,6 +208,6 @@ private:
         direction.rotate(180);
         //verify
         cout << direction.getRadians() << endl;
-        assert(direction.getRadians() == 180.0);
+        assert(direction.getRadians() == -1 * round(180.0));
     }
 };
