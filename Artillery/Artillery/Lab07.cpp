@@ -16,7 +16,7 @@
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "ground.h"     // for GROUND
 #include "pos.h"   // for POSITION
-#include "test.h";
+#include "test.h"
 
 
 using namespace std;

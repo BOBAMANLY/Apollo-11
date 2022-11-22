@@ -198,5 +198,5 @@ private:
         //verify
         assert(direction.getRadians() >= -2.213 && direction.getRadians() <= -2.211);
     }
-    cout << "All Direction tests passed!"
+    cout << "All Direction tests passed!";
 };

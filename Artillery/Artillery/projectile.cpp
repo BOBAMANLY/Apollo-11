@@ -1,7 +1,7 @@
-#include "projectile.h";
-#include "ground.h";
-#include <chrono>;
-#include <tuple>;
+#include "projectile.h"
+#include "ground.h"
+#include <chrono>
+#include <tuple>
 using namespace std;
 
 

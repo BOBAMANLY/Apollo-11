@@ -1,4 +1,4 @@
-#include "velocity.h";
+#include "velocity.h"
 
 double Velocity::getDX() {
 	return dx;

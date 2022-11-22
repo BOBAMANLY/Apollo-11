@@ -1,6 +1,6 @@
 #pragma once
-#include <list>;
-#include "pos.h";
+#include <list>
+#include "pos.h"
 using namespace std;
 
 class projectile {
