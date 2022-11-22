@@ -1,7 +1,7 @@
 #pragma once
 
 
-class velocity {
+class Velocity {
 private:
 	double dx;
 	double dy;

@@ -2,6 +2,8 @@
 #include "velocity.h"
 #include <cassert>
 #include "mathFunctions.h"
+#include "math.h"
+#include <cmath>
 
 using namespace std;
 
@@ -101,7 +103,9 @@ private:
 		Velocity v;
 		v.setDX(10.0);
 		//exercise
-		v.reverse();
+		double dx = v.getDX();
+		double dy = v.getDY();
+		v.reverse(dx,dy);
 		//verify
 		assert(v.getDX() == -10.0);
 	}
@@ -110,7 +114,9 @@ private:
 		Velocity v;
 		v.setDY(10.0);
 		//exercise
-		v.reverse();
+		double dx = v.getDX();
+		double dy = v.getDY();
+		v.reverse(dx, dy);
 		//verify
 		assert(v.getDY() == -10.0);
 	}
@@ -119,7 +125,9 @@ private:
 		Velocity v;
 		v.setDX(-10.0);
 		//exercise
-		v.reverse();
+		double dx = v.getDX();
+		double dy = v.getDY();
+		v.reverse(dx, dy);
 		//verify
 		assert(v.getDX() == 10.0);
 	}
@@ -128,7 +136,9 @@ private:
 		Velocity v;
 		v.setDY(-10.0);
 		//exercise
-		v.reverse();
+		double dx = v.getDX();
+		double dy = v.getDY();
+		v.reverse(dx, dy);
 		//verify
 		assert(v.getDY() == 10.0);
 	}
@@ -137,7 +147,9 @@ private:
 		Velocity v;
 		v.setDX(0.0);
 		//exercise
-		v.reverse();
+		double dx = v.getDX();
+		double dy = v.getDY();
+		v.reverse(dx, dy);
 		//verify
 		assert(v.getDX() == 0.0);
 	}
@@ -146,7 +158,9 @@ private:
 		Velocity v;
 		v.setDY(0.0);
 		//exercise
-		v.reverse();
+		double dx = v.getDX();
+		double dy = v.getDY();
+		v.reverse(dx, dy);
 		//verify
 		assert(v.getDY() == 0.0);
 
@@ -157,7 +171,9 @@ private:
 		v.setDX(-10.0);
 		v.setDY(10.0);
 		//exercise
-		v.reverse();
+		double dx = v.getDX();
+		double dy = v.getDY();
+		v.reverse(dx, dy);
 		//verify
 		assert(v.getDX() == 10.0 and v.getDY() == -10.0);
 	}
@@ -167,7 +183,9 @@ private:
 		v.setDX(10.0);
 		v.setDY(-10.0);
 		//exercise
-		v.reverse();
+		double dx = v.getDX();
+		double dy = v.getDY();
+		v.reverse(dx, dy);
 		//verify
 		assert(v.getDX() == -10.0 and v.getDY() == 10.0);
 	}
@@ -195,7 +213,8 @@ private:
 		double dy = v.getDY();
 		double result = math.AngleFromComponents(dx, dy);
 		//verify
-		assert(result == (2 * acos(0.0)) / 2);
+		assert(result == (2 * acos(0.0)) / 4);
+		//assert(3.14 > result > 0 );
 	}
 	void getDirectionLeft() {
 		//setup

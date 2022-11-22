@@ -1,37 +1,37 @@
 #include "velocity.h";
 
-double velocity::getDX() {
+double Velocity::getDX() {
 	return dx;
 }
-double velocity::getDY() {
+double Velocity::getDY() {
 	return dy;
 }
-double velocity::getSpeed() {
+double Velocity::getSpeed() {
 	return speed;
 }
-double velocity::getDirection() {
+double Velocity::getDirection() {
 	return direction;
 }
-void velocity::setDX(double input) {
+void Velocity::setDX(double input) {
 	dx = input;
 }
-void velocity::setDY(double input) {
+void Velocity::setDY(double input) {
 	dy = input;
 }
-void velocity::setSpeed(double input) {
+void Velocity::setSpeed(double input) {
 	speed = input;
 }
-void velocity::setDirection(double input) {
+void Velocity::setDirection(double input) {
 	direction = input;
 }
-void velocity::reverse(double ddx, double ddy)
+void Velocity::reverse(double ddx, double ddy)
 {
 	dx = ddx * -1;
 	dy = ddy * -1;
 }
-void velocity::addDX(double input) {
+void Velocity::addDX(double input) {
 	dx += input;
 }
-void velocity::addDY(double input) {
+void Velocity::addDY(double input) {
 	dy += input;
 }
