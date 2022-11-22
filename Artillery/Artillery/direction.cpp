@@ -13,7 +13,7 @@ double Direction::getRadians() {
 }
 double Direction::getDegrees() {
 	double pi = 2 * acos(0.0);
-	return (360) * (radians / 2 * pi);
+	return degrees;
 }
 
 void Direction::setDXDY(double dxInput, double dyInput) {
@@ -22,24 +22,29 @@ void Direction::setDXDY(double dxInput, double dyInput) {
 }
 void Direction::setDegrees(double input) {
 	double pi = 2 * acos(0.0);
-	radians = (360) * (input / 2 * pi);
+	degrees = (input) * (180/pi);
 }
 void Direction::setRadians(double input) {
 	double pi = 2 * acos(0.0);
-	radians = input;
+	radians = (input) * (pi/180);
 }
 
 void Direction::setDown() {
-	setDegrees(180.0);
+	double pi = 2 * acos(0.0);
+	setRadians(180.0);
+	setDegrees(pi);
 }
 void Direction::setUp() {
+	setRadians(0.0);
 	setDegrees(0.0);
 }
 void Direction::setRight() {
-	setDegrees(270.0);
+	setRadians(270.0);
+	setDegrees(4.71239);
 }
 void Direction::setLeft() {
-	setDegrees(90.0);
+	setRadians(90.0);
+	setDegrees(1.5708);
 }
 
 void Direction::reverse()

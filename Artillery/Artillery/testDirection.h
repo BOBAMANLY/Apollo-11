@@ -54,7 +54,9 @@ private:
     {  // setup
        // exercise
         Direction direction;
+        direction.setRadians(0.0);
         // verify
+        cout << direction.getRadians() << endl;
         assert(direction.getRadians() == 0.0);
     }  // teardown
 
@@ -63,9 +65,10 @@ private:
     {  // setup
         Direction direction;
         // exercise
-        direction.setDegrees(10);
+        direction.setDegrees(2.0);
         // verify
-        assert(direction.getDegrees() == 10);
+        cout << direction.getDegrees() << endl;
+        assert(round(direction.getDegrees()) == round(114.592));
         // teardown
     }
 
@@ -74,9 +77,9 @@ private:
         //setup
         Direction direction;
         //exercise
-        direction.setRadians(1.0);
+        direction.setRadians(200.0);
         //verify
-        assert(direction.getRadians() == 1.0);
+        assert(round(direction.getRadians()) == round(3.491));
     } //teardown
 
     void correctSetDXDY()
@@ -90,6 +93,11 @@ private:
         //verify
         assert(direction.getDX() == dxInput);
         assert(direction.getDY() == dyInput);
+        //teardown
+        //direction.getDX() == 0;
+        //direction.getDY() == 0;
+        //direction.setRadians(0.0);
+        //direction.setDegrees(0.0);
     }
 
     void correctSetLeft()
@@ -99,7 +107,8 @@ private:
         //exercise
         direction.setLeft();
         //verify
-        assert(direction.getDegrees() == -22.0);
+        cout << direction.getDegrees() << endl;
+        assert(round(direction.getDegrees()) == round(90.0));
     }
 
     void correctSetRight()
@@ -109,7 +118,8 @@ private:
         //exercise
         direction.setRight();
         //verify
-        assert(direction.getDegrees() == -40);
+        cout << direction.getDegrees() << endl;
+        assert(round(direction.getDegrees()) == round(270));
     }
 
     void correctSetUp()
@@ -119,6 +129,7 @@ private:
         //exercise
         direction.setUp();
         //verify
+        cout << direction.getDegrees() << endl;
         assert(direction.getDegrees() == 0.0);
     }
 
@@ -129,18 +140,21 @@ private:
         //exercise
         direction.setDown();
         //verify
-        assert(direction.getDegrees() == 180.0);
+        cout << direction.getDegrees() << endl;
+        assert(round(direction.getDegrees()) == round(180.0));
     }
 
     void correctReverse()
     {
         //setup
         Direction direction;
+        double pi = 2 * acos(0.0);
         //exercise
         direction.setDegrees(90.0);
         direction.reverse();
         //verify
-        assert(closeEnough(direction.getRadians(), -(2 * acos(0.0)), 0.001));
+        cout << direction.getRadians() << endl;
+        assert(closeEnough(direction.getRadians(), -pi, .001));
     }
 
     void correctOneRound()
@@ -150,6 +164,7 @@ private:
         //exercise
         direction.setRadians(0.4 + (acos(0.0) * 2.0));
         //verify
+        cout << direction.getRadians() << endl;
         assert(closeEnough(direction.getRadians(), 0.40001, 0.399));
     }
 
@@ -160,6 +175,7 @@ private:
         //exercise
         direction.setRadians(-0.34);
         //verify
+        cout << direction.getRadians() << endl;
         assert(direction.getRadians() == -0.34);
     }
 
@@ -170,6 +186,7 @@ private:
         //exercise
         direction.setRadians(0.1 + (2.0 * acos(0.0) * 7.0));
         //verify
+        cout << direction.getRadians() << endl;
         assert(direction.getRadians() >= 0.0999 && direction.getRadians() <= 0.1001);
     }
 
@@ -180,6 +197,7 @@ private:
         //exercise
         direction.rotate(0.0);
         //verify
+        cout << direction.getRadians() << endl;
         assert(direction.getRadians() == 0.0);
     }
 
@@ -190,6 +208,7 @@ private:
         //exercise
         direction.rotate(180);
         //verify
+        cout << direction.getRadians() << endl;
         assert(direction.getRadians() == 180.0);
     }
 };
