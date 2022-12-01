@@ -58,6 +58,23 @@ public:
     double time;                   // amount of time since the last firing
 };
 
+void fireProjectile(Demo* pDemo) {
+    // move the projectile across the screen
+    for (int i = 0; i < 20; i++)
+    {
+        // this bullet is moving left at 1 pixel per frame
+        double x = pDemo->projectilePath[i].getPixelsX(); // Gets x value of last position
+        double y = pDemo->projectilePath[i].getPixelsY(); // get y value of last position
+        x -= 1.0; // Change x by -1, move left 1
+        y -= 1.0; // change y value by -1
+        if (x < 0) // If projectile reaches end of the screen, move it back to the beginning.
+            x = pDemo->ptUpperRight.getPixelsX();
+        pDemo->projectilePath[i].setPixelsY(y);
+        pDemo->projectilePath[i].setPixelsX(x);
+        
+    }
+}
+
 /*************************************
  * All the interesting work happens here, when
  * I get called back from OpenGL to draw a frame.
@@ -98,16 +115,7 @@ void callBack(const Interface* pUI, void* p)
     // advance time by half a second.
     pDemo->time += 0.5;
 
-    // move the projectile across the screen
-    for (int i = 0; i < 20; i++)
-    {
-        // this bullet is moving left at 1 pixel per frame
-        double x = pDemo->projectilePath[i].getPixelsX();
-        x -= 1.0;
-        if (x < 0)
-            x = pDemo->ptUpperRight.getPixelsX();
-        pDemo->projectilePath[i].setPixelsX(x);
-    }
+    fireProjectile(pDemo);
 
     //
     // draw everything
@@ -133,6 +141,8 @@ void callBack(const Interface* pUI, void* p)
 }
 
 double Position::metersFromPixels = 40.0;
+
+
 
 /*********************************
  * Initialize the simulation and set it in motion

@@ -40,6 +40,7 @@ public:
 		CorrectInterpoleration();
 		ZeroInterpoleration();
 		NegativeInterpoleration();
+		passed();
 	}
 private:
 	/*
@@ -67,6 +68,10 @@ private:
 	double pythagoreanTheorem(double dx, double dy);
 	double interpoleration(double r0, double d0, double r1, double d1, double d);
 	*/
+	void passed()
+	{
+		cout << "All Math Functions tests passed!" << endl;
+	}
 
 	void toRadiansConversionCorrect() {
 		// Setup

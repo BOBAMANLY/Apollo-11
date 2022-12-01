@@ -29,6 +29,7 @@ public:
 		getDirecttionRight();
 		getDirectionLeft();
 		getDirectionDown();
+		passed();
 	}
 private:
 	// Write unit tests using this format.
@@ -42,6 +43,10 @@ private:
 		assert(something == something)
 		// Teardown
 	}*/
+	void passed()
+	{
+		cout << "All Velocity tests passed!" << endl;
+	}
 	void correctAddDY() {
 		// Setup
 		Velocity v;
