@@ -61,6 +61,7 @@ public:
     Position  ptUpperRight;        // size of the screen
     Position targetPosition;
     int targetsHit = 0;
+    bool status = true;
     double angle;                  // angle of the howitzer 
     double time;                   // amount of time since the last firing
     bool fired = false;
@@ -121,28 +122,28 @@ void fireProjectile(Demo* pDemo) {
         else if (pDemo->firedAngle > 1.4) {
             x += 2;
         }
-        else if (pDemo->firedAngle <= -0.2 and pDemo->firedAngle > 0) { // Left side aim
+        else if (pDemo->firedAngle >= -0.2 and pDemo->firedAngle < 0) { // Left side aim
             x -= 0.8;
         }
-        else if (pDemo->firedAngle <= -0.4 and pDemo->firedAngle > -0.2) {
+        else if (pDemo->firedAngle >= -0.4 and pDemo->firedAngle < -0.2) {
             x -= 1.0;
         }
-        else if (pDemo->firedAngle <= -0.6 and pDemo->firedAngle > -0.4) {
+        else if (pDemo->firedAngle >= -0.6 and pDemo->firedAngle < -0.4) {
             x -= 1.5;
         }
-        else if (pDemo->firedAngle <= -0.8 and pDemo->firedAngle > -0.6) {
+        else if (pDemo->firedAngle >= -0.8 and pDemo->firedAngle < -0.6) {
             x -= 2.5;
         }
-        else if (pDemo->firedAngle <= -1.0 and pDemo->firedAngle > -0.8) {
+        else if (pDemo->firedAngle >= -1.0 and pDemo->firedAngle < -0.8) {
             x -= 3.0;
         }
-        else if (pDemo->firedAngle <= -1.2 and pDemo->firedAngle > -1.0) {
+        else if (pDemo->firedAngle >= -1.2 and pDemo->firedAngle < -1.0) {
             x -= 3.5;
         }
-        else if (pDemo->firedAngle <= -1.4 and pDemo->firedAngle > -1.2) {
+        else if (pDemo->firedAngle >= -1.4 and pDemo->firedAngle < -1.2) {
             x -= 4.0;
         }
-        else if (pDemo->firedAngle > -1.4) {
+        else if (pDemo->firedAngle < -1.4) {
             x -= 2;
         }
         
@@ -199,7 +200,7 @@ void callBack(const Interface* pUI, void* p)
     //cout << pDemo->projectilePath[0] << endl; // Display projectile Position
     // fire that gun
     cout << pDemo->angle << endl; // Check angle
-    if (pUI->isSpace()) {
+    if (pUI->isSpace() and pDemo->status == true) {
         //pDemo->projectilePath[0].setPixelsY(pDemo->ptHowitzer.getPixelsY());
         //pDemo->projectilePath[0].setPixelsX(pDemo->ptHowitzer.getPixelsX());
         pDemo->time = 0.0;
@@ -208,6 +209,7 @@ void callBack(const Interface* pUI, void* p)
     }
     if (pDemo->fired) {
         fireProjectile(pDemo);
+        pDemo->status = false;
         pDemo->time += 0.03;
     }
     
@@ -230,8 +232,11 @@ void callBack(const Interface* pUI, void* p)
         //cout << pDemo->projectilePath[i].getPixelsY() << endl; Show y position
         if (pDemo->projectilePath[i].getPixelsY() > pDemo->ptHowitzer.getPixelsY() - 1)
             gout.drawProjectile(pDemo->projectilePath[i], 0.5 * (double)i);
-        if (pDemo->projectilePath[i].getPixelsY() < pDemo->ptHowitzer.getPixelsY() - 1)
+        if (pDemo->projectilePath[i].getPixelsY() < pDemo->ptHowitzer.getPixelsY() - 1) {
             projectileReset(pDemo);
+            pDemo->status = true;
+        }
+            
         
     }
 
@@ -244,7 +249,14 @@ void callBack(const Interface* pUI, void* p)
             break;
         }
     }
-    
+    string readyToFire;
+    if (pDemo->status == true) {
+        readyToFire = "Ready";
+    }
+    else {
+        readyToFire = "Not Ready";
+    }
+
 
     // draw some text on the screen
     gout.setf(ios::fixed | ios::showpoint);
@@ -252,7 +264,8 @@ void callBack(const Interface* pUI, void* p)
     gout << "Time since the bullet was fired: " << pDemo->time << "s\n" 
         << "Projectile Altitude: " << pDemo->projectilePath[1].getPixelsY() << "\n"
         << "Howitzer Angle: " << pDemo->angle << "\n\n"
-        << "Targets Hit: " << pDemo->targetsHit << "\n";
+        << "Targets Hit: " << pDemo->targetsHit << "\n"
+        << "Ready To Fire: " << readyToFire << "\n";
 }
 
 double Position::metersFromPixels = 40.0;
