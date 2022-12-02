@@ -95,7 +95,7 @@ void ogstream::flush()
 }
 
 /*************************************************************************
- * DRAW TEXT
+ * DRAW TEXT 
  * Draw text using a simple bitmap font
  *   INPUT  topLeft   The top left corner of the text
  *          text      The text to be displayed
@@ -130,7 +130,9 @@ void ogstream::drawProjectile(const Position& pos, double age)
     posBegin.setPixelsY(pos.getPixelsY() - 1.5);
     posEnd.setPixelsX(pos.getPixelsX() + 1.5);
     posEnd.setPixelsY(pos.getPixelsY() + 1.5);
-    drawRectangle(posBegin, posEnd, color /* red % */, color /* green % */, color /* blue % */);
+    //drawRectangle(posBegin, posEnd, color /* red % */, color /* green % */, color /* blue % */);
+    drawRectangle(posBegin, posEnd, 100 /* red % */, 0 /* green % */, 0 /* blue % */);
+
 }
 
 /************************************************************************
@@ -168,7 +170,9 @@ void ogstream::drawRectangle(const Position& begin, const Position& end,
 {
     // Get ready...
     glBegin(GL_QUADS);
-    glColor3f((GLfloat)red, (GLfloat)green, (GLfloat)blue);
+    glColor3f((GLfloat)red, (GLfloat)green, (GLfloat)blue);// This changes the color
+    //glColor3f(0, 0, 100);
+
 
     // Draw the actual line
     glVertex2f((GLfloat)begin.getPixelsX(), (GLfloat)begin.getPixelsY());
