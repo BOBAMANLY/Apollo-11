@@ -45,8 +45,10 @@ public:
         // of a trail that fades off in the distance.
         for (int i = 0; i < 20; i++)
         {
-            projectilePath[i].setPixelsX((double)i * 2.0);
-            projectilePath[i].setPixelsY(ptUpperRight.getPixelsY() / 1.5);
+            //projectilePath[i].setPixelsX((double)i * 2.0); // Original
+            projectilePath[i].setPixelsX(Position(ptUpperRight).getPixelsX() / 2.0);
+            //projectilePath[i].setPixelsY(ptUpperRight.getPixelsY() / 1.5); // Original
+            projectilePath[i].setPixelsY(ptHowitzer.getPixelsY());
         }
     }
 
@@ -59,6 +61,8 @@ public:
 };
 
 void fireProjectile(Demo* pDemo) {
+    /*
+     // Constant moving across the top of the screen
     // move the projectile across the screen
     for (int i = 0; i < 20; i++)
     {
@@ -71,7 +75,22 @@ void fireProjectile(Demo* pDemo) {
             x = pDemo->ptUpperRight.getPixelsX();
         pDemo->projectilePath[i].setPixelsY(y);
         pDemo->projectilePath[i].setPixelsX(x);
+    }*/
+    for (int i = 0; i < 20; i++)
+    {
+        double x = pDemo->projectilePath[i].getPixelsX(); // Gets x value of last position
+        double y = pDemo->projectilePath[i].getPixelsY(); // get y value of last position
+        if (pDemo->time < 5.0) {
+            y += 1.0;
+        }
+        else {
+            y -= 1.0;
+        }
         
+        if (x < 0) // If projectile reaches end of the screen, move it back to the beginning.
+            x = pDemo->ptUpperRight.getPixelsX();
+        pDemo->projectilePath[i].setPixelsY(y);
+        pDemo->projectilePath[i].setPixelsX(x);
     }
 }
 
@@ -103,20 +122,16 @@ void callBack(const Interface* pUI, void* p)
         pDemo->angle += (pDemo->angle >= 0 ? -0.003 : 0.003);
     if (pUI->isDown())
         pDemo->angle += (pDemo->angle >= 0 ? 0.003 : -0.003);
-
+    cout << pDemo->projectilePath[0] << endl;
     // fire that gun
-    if (pUI->isSpace())
+    if (pUI->isSpace()) {
+        //pDemo->projectilePath[0].setPixelsY(pDemo->ptHowitzer.getPixelsY());
+        //pDemo->projectilePath[0].setPixelsX(pDemo->ptHowitzer.getPixelsX());
         pDemo->time = 0.0;
-
-    //
-    // perform all the game logic
-    //
-
-    // advance time by half a second.
-    pDemo->time += 0.5;
-
+        
+    }
     fireProjectile(pDemo);
-
+    pDemo->time += 0.01;
     //
     // draw everything
     //
