@@ -1,14 +1,14 @@
 /*************************************************************
  * 1. Name:
- *      The Key
+ *      Jacob Fisher, Phil, Joseph
  * 2. Assignment Name:
  *      Lab 08: M777 Howitzer
  * 3. Assignment Description:
  *      Simulate firing the M777 howitzer 15mm artillery piece
  * 4. What was the hardest part? Be as specific as possible.
- *      ??
+ *      Figuring out the given code in order to change it and get the Howitzer to perform as required.
  * 5. How long did it take for you to complete the assignment?
- *      ??
+ *      Roughly 6 - 8 hours.
  *****************************************************************/
 
 #include <cassert>      // for ASSERT
@@ -230,12 +230,23 @@ void callBack(const Interface* pUI, void* p)
     
     for (int i = 0; i < 20; i++) {
         //cout << pDemo->projectilePath[i].getPixelsY() << endl; Show y position
-        if (pDemo->projectilePath[i].getPixelsY() > pDemo->ptHowitzer.getPixelsY() - 1)
-            gout.drawProjectile(pDemo->projectilePath[i], 0.5 * (double)i);
-        if (pDemo->projectilePath[i].getPixelsY() < pDemo->ptHowitzer.getPixelsY() - 1) {
-            projectileReset(pDemo);
-            pDemo->status = true;
+        if (pDemo->targetPosition.getPixelsY() - 1 <= pDemo->ptHowitzer.getPixelsY() - 1) {
+            if (pDemo->projectilePath[i].getPixelsY() > pDemo->targetPosition.getPixelsY() - 1)
+                gout.drawProjectile(pDemo->projectilePath[i], 0.5 * (double)i);
+            if (pDemo->projectilePath[i].getPixelsY() < pDemo->targetPosition.getPixelsY() - 1) {
+                projectileReset(pDemo);
+                pDemo->status = true;
+            }
         }
+        else {
+            if (pDemo->projectilePath[i].getPixelsY() > pDemo->ptHowitzer.getPixelsY() - 1)
+                gout.drawProjectile(pDemo->projectilePath[i], 0.5 * (double)i);
+            if (pDemo->projectilePath[i].getPixelsY() < pDemo->ptHowitzer.getPixelsY() - 1) {
+                projectileReset(pDemo);
+                pDemo->status = true;
+            }
+        }
+        
             
         
     }
@@ -247,6 +258,8 @@ void callBack(const Interface* pUI, void* p)
             if (pDemo->projectilePath[i].getPixelsX() < pDemo->targetPosition.getPixelsX() + 15 and pDemo->projectilePath[i].getPixelsX() > pDemo->targetPosition.getPixelsX() - 15)
             {
                 pDemo->targetsHit += 1;
+                pDemo->ground.reset(pDemo->ptHowitzer);
+                pDemo->targetPosition = pDemo->ground.getTarget();
                 break;
             }
             break;
