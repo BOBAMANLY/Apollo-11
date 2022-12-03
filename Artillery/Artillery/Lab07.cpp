@@ -188,18 +188,18 @@ void callBack(const Interface* pUI, void* p)
 
     // move a large amount
     if (pUI->isRight())
-        pDemo->angle += 0.05;
+        pDemo->angle += 0.025;
     if (pUI->isLeft())
-        pDemo->angle -= 0.05;
+        pDemo->angle -= 0.025;
 
     // move by a little
     if (pUI->isUp())
-        pDemo->angle += (pDemo->angle >= 0 ? -0.003 : 0.003);
+        pDemo->angle += (pDemo->angle >= 0 ? -0.002 : 0.002);
     if (pUI->isDown())
-        pDemo->angle += (pDemo->angle >= 0 ? 0.003 : -0.003);
+        pDemo->angle += (pDemo->angle >= 0 ? 0.002 : -0.002);
     //cout << pDemo->projectilePath[0] << endl; // Display projectile Position
     // fire that gun
-    cout << pDemo->angle << endl; // Check angle
+    //cout << pDemo->angle << endl; // Check angle
     if (pUI->isSpace() and pDemo->status == true) {
         //pDemo->projectilePath[0].setPixelsY(pDemo->ptHowitzer.getPixelsY());
         //pDemo->projectilePath[0].setPixelsX(pDemo->ptHowitzer.getPixelsX());
@@ -245,7 +245,10 @@ void callBack(const Interface* pUI, void* p)
     for (int i = 0; i < 20; i++) {
         if (pDemo->projectilePath[i].getPixelsY() < pDemo->targetPosition.getPixelsY() + 15 and pDemo->projectilePath[i].getPixelsY() > pDemo->targetPosition.getPixelsY() - 15) {
             if (pDemo->projectilePath[i].getPixelsX() < pDemo->targetPosition.getPixelsX() + 15 and pDemo->projectilePath[i].getPixelsX() > pDemo->targetPosition.getPixelsX() - 15)
+            {
                 pDemo->targetsHit += 1;
+                break;
+            }
             break;
         }
     }
