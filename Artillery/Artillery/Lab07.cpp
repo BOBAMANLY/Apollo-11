@@ -212,7 +212,7 @@ void callBack(const Interface* pUI, void* p)
         pDemo->status = false;
         pDemo->time += 0.03;
     }
-    
+    cout << "Projectile: " << pDemo->projectilePath->getMetersY() << endl;
     
     //
     // draw everything
@@ -227,8 +227,21 @@ void callBack(const Interface* pUI, void* p)
     gout.drawHowitzer(pDemo->ptHowitzer, pDemo->angle, pDemo->time);
 
     // draw the projectile
-    
+    // TODO: Projectile reset when ground is hit //////////////////////////////////////////////////////////////////////////////////////////////////////
     for (int i = 0; i < 20; i++) {
+        cout << "Ground: " << pDemo->ground.getGround()[i] << endl;
+        if (pDemo->ground.getGround()[i] >= pDemo->projectilePath[i].getMetersY()) {
+            
+            projectileReset(pDemo);
+            pDemo->status = true;
+            
+        }
+        if (pDemo->ground.getGround()[i] <= pDemo->projectilePath[i].getMetersY()) {
+            gout.drawProjectile(pDemo->projectilePath[i], 0.5 * (double)i);
+            
+        }
+        // Makes projectile reset at target or cannon depending on which is lower.
+        /*
         //cout << pDemo->projectilePath[i].getPixelsY() << endl; Show y position
         if (pDemo->targetPosition.getPixelsY() - 1 <= pDemo->ptHowitzer.getPixelsY() - 1) {
             if (pDemo->projectilePath[i].getPixelsY() > pDemo->targetPosition.getPixelsY() - 1)
@@ -245,7 +258,7 @@ void callBack(const Interface* pUI, void* p)
                 projectileReset(pDemo);
                 pDemo->status = true;
             }
-        }
+        }*/
         
             
         

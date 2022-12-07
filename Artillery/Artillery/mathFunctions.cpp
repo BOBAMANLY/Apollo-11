@@ -167,6 +167,8 @@ double mathFunctions :: DragForceEquation(double c, double p, double v, double a
 	return drag;
 }
 
+
+
 /*
 int main()
 {

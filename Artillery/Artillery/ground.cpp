@@ -33,6 +33,10 @@ Ground::Ground(const Position& posUpperRight) :
     ground = new double[(int)posUpperRight.getPixelsX()];
 }
 
+double* Ground::getGround() {
+    return ground;
+}
+
 /************************************************************************
  * GROUND :: GET ELEVATION METERS
  * Determine how high the Position is off the ground
