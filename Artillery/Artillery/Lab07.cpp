@@ -17,6 +17,7 @@
 #include "ground.h"     // for GROUND
 #include "pos.h"   // for POSITION
 #include "test.h"
+#include "mathFunctions.h"
 
 
 using namespace std;
@@ -67,6 +68,26 @@ public:
     bool fired = false;
     double firedAngle;
 };
+double findInterpolation(Demo* pDemo) {
+    /*
+    double dragCoefficientTable(double mach);
+	double densityTable(double altitude);
+	double soundTable(double altitude);
+	double gravityTable(double altitude);
+    */
+    mathFunctions mf;
+    /*
+    map<double, double> dragTableData = mf.dragCoefficientTable();
+    map<double, double> densityTableData = mf.densityTable();
+    map<double, double> soundTableData = mf.soundTable();
+    map<double, double> gravityTableData = mf.gravityTable();
+    */
+    double altitude = pDemo->projectilePath->getMetersY();
+    
+    double movement = NULL;
+    
+    return movement;
+}
 
 void fireProjectile(Demo* pDemo) {
     /*
@@ -212,7 +233,7 @@ void callBack(const Interface* pUI, void* p)
         pDemo->status = false;
         pDemo->time += 0.03;
     }
-    cout << "Projectile: " << pDemo->projectilePath->getMetersY() << endl;
+    
     
     //
     // draw everything
@@ -229,14 +250,14 @@ void callBack(const Interface* pUI, void* p)
     // draw the projectile
     // TODO: Projectile reset when ground is hit //////////////////////////////////////////////////////////////////////////////////////////////////////
     for (int i = 0; i < 20; i++) {
-        cout << "Ground: " << pDemo->ground.getGround()[i] << endl;
-        if (pDemo->ground.getGround()[i] >= pDemo->projectilePath[i].getMetersY()) {
-            
+        cout << "Ground: " << pDemo->ground.getElevationMeters(pDemo->projectilePath[i]) << endl;
+        //cout << "Projectile: " << pDemo->projectilePath[i].getPixelsY() << endl;
+        if (pDemo->ground.getElevationMeters(pDemo->projectilePath[i]) >= pDemo->projectilePath[i].getMetersY()) {
             projectileReset(pDemo);
             pDemo->status = true;
             
         }
-        if (pDemo->ground.getGround()[i] <= pDemo->projectilePath[i].getMetersY()) {
+        if (pDemo->ground.getElevationMeters(pDemo->projectilePath[i]) <= pDemo->projectilePath[i].getMetersY()) {
             gout.drawProjectile(pDemo->projectilePath[i], 0.5 * (double)i);
             
         }
