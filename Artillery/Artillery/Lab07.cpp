@@ -68,7 +68,8 @@ public:
     bool fired = false;
     double firedAngle;
 };
-double findInterpolation(Demo* pDemo) {
+double findInterpolationValue(Demo* pDemo, int type) {
+    // The Type parameter is the table you need the value from
     /*
     double dragCoefficientTable(double mach);
 	double densityTable(double altitude);
@@ -76,15 +77,54 @@ double findInterpolation(Demo* pDemo) {
 	double gravityTable(double altitude);
     */
     mathFunctions mf;
-    /*
-    map<double, double> dragTableData = mf.dragCoefficientTable();
-    map<double, double> densityTableData = mf.densityTable();
-    map<double, double> soundTableData = mf.soundTable();
-    map<double, double> gravityTableData = mf.gravityTable();
-    */
-    double altitude = pDemo->projectilePath->getMetersY();
     
-    double movement = NULL;
+    double altitude = pDemo->projectilePath->getMetersY();
+    double movement;
+    pair<double, double> key1 = make_pair(0.0, 0.0);
+    pair<double, double> key2 = make_pair(1.0, 0.0);
+    switch (type) {
+    case(1):
+        
+        for (const auto& pair : mf.dragTableData) {
+            if (altitude < pair.first && std::abs(altitude - pair.first) < std::abs(altitude - key1.first)) {
+                key1 = pair;
+            }
+            if (altitude > pair.first && std::abs(altitude - pair.first) < std::abs(altitude - key2.first)) {
+                key2 = pair;
+            }
+        }
+        movement = mf.interpoleration(key1.first, key1.second, key2.first, key2.second, 1);
+    case(2):
+        for (const auto& pair : mf.densityTableData) {
+            if (altitude < pair.first && std::abs(altitude - pair.first) < std::abs(altitude - key1.first)) {
+                key1 = pair;
+            }
+            if (altitude > pair.first && std::abs(altitude - pair.first) < std::abs(altitude - key2.first)) {
+                key2 = pair;
+            }
+        }
+        movement = mf.interpoleration(key1.first, key1.second, key2.first, key2.second, 1);
+    case(3):
+        for (const auto& pair : mf.soundTableData) {
+            if (altitude < pair.first && std::abs(altitude - pair.first) < std::abs(altitude - key1.first)) {
+                key1 = pair;
+            }
+            if (altitude > pair.first && std::abs(altitude - pair.first) < std::abs(altitude - key2.first)) {
+                key2 = pair;
+            }
+        }
+        movement = mf.interpoleration(key1.first, key1.second, key2.first, key2.second, 1);
+    case(4):
+        for (const auto& pair : mf.gravityTableData) {
+            if (altitude < pair.first && std::abs(altitude - pair.first) < std::abs(altitude - key1.first)) {
+                key1 = pair;
+            }
+            if (altitude > pair.first && std::abs(altitude - pair.first) < std::abs(altitude - key2.first)) {
+                key2 = pair;
+            }
+        }
+        movement = mf.interpoleration(key1.first, key1.second, key2.first, key2.second, 1);
+    }
     
     return movement;
 }
@@ -119,7 +159,10 @@ void fireProjectile(Demo* pDemo) {
 
         // Right side aim
         // 0 .2 .4 .6 .8 1.0 1.2 1.4 
-        if (pDemo->firedAngle <= 0.2 and pDemo->firedAngle > 0) {
+        if (pDemo->firedAngle <= 0.1 and pDemo->firedAngle > 0) {
+        x += 0.4;
+        }
+        else if (pDemo->firedAngle <= 0.2 and pDemo->firedAngle > 0.1) {
             x += 0.8;
         }
         else if (pDemo->firedAngle <= 0.4 and pDemo->firedAngle > 0.2) {
@@ -143,7 +186,10 @@ void fireProjectile(Demo* pDemo) {
         else if (pDemo->firedAngle > 1.4) {
             x += 2;
         }
-        else if (pDemo->firedAngle >= -0.2 and pDemo->firedAngle < 0) { // Left side aim
+        else if (pDemo->firedAngle >= -0.1 and pDemo->firedAngle < 0) { // Left aim
+            x -= 0.4;
+        }
+        else if (pDemo->firedAngle >= -0.2 and pDemo->firedAngle < -0.1) {
             x -= 0.8;
         }
         else if (pDemo->firedAngle >= -0.4 and pDemo->firedAngle < -0.2) {

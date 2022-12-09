@@ -34,12 +34,16 @@ public:
 	double pythagoreanTheorem(double dx, double dy);
 	double interpoleration(double r0, double d0, double r1, double d1, double d);
 
-	/*
+
 	// Tables
-	map<double, double> dragCoefficientTable();
-	map<double, double> densityTable();
-	map<double, double> soundTable();
-	map<double, double> gravityTable();
-	*/
+	void dragCoefficientTable();
+	void densityTable();
+	void soundTable();
+	void gravityTable();
+
+	std::map<double, double> gravityTableData;
+	std::map<double, double> soundTableData;
+	std::map<double, double> densityTableData;
+	std::map<double, double> dragTableData;
 
 };

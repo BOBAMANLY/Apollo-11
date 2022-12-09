@@ -166,9 +166,9 @@ double mathFunctions :: DragForceEquation(double c, double p, double v, double a
 	double drag = .5 * c * p * (v * v) * a;
 	return drag;
 }
-/*
-map<double, double> mathFunctions::dragCoefficientTable() {
-	map<double, double> dragTableData;
+
+void mathFunctions::dragCoefficientTable() {
+	
 										// mach,    drag
 	dragTableData.insert(pair<double, double>(0.300,	0.1629));
 	dragTableData.insert(pair<double, double>(0.500,	0.1659));
@@ -186,11 +186,10 @@ map<double, double> mathFunctions::dragCoefficientTable() {
 	dragTableData.insert(pair<double, double>(2.870,	0.2297));
 	dragTableData.insert(pair<double, double>(2.890,	0.2306));
 	dragTableData.insert(pair<double, double>(5.000,	0.2656));
-	return dragTableData;
 }
 
-map<double, double> mathFunctions::densityTable() {
-	map<double, double> densityTableData;
+void mathFunctions::densityTable() {
+	
 										  // altitude, density
 	densityTableData.insert(pair<double, double>(0,		1.2250000));
 	densityTableData.insert(pair<double, double>(1000,	1.1120000));
@@ -212,10 +211,9 @@ map<double, double> mathFunctions::densityTable() {
 	densityTableData.insert(pair<double, double>(60000,	0.0003097));
 	densityTableData.insert(pair<double, double>(70000,	0.0000828));
 	densityTableData.insert(pair<double, double>(80000,	0.0000185));
-	return densityTableData;
 }
-map<double, double> mathFunctions::soundTable() {
-	map<double, double> soundTableData;
+void mathFunctions::soundTable() {
+	
 										 //altitude, speed of sound
 	soundTableData.insert(pair<double, double>(0,		340));
 	soundTableData.insert(pair<double, double>(1000,	336));
@@ -233,24 +231,21 @@ map<double, double> mathFunctions::soundTable() {
 	soundTableData.insert(pair<double, double>(25000,	295));
 	soundTableData.insert(pair<double, double>(30000,	305));
 	soundTableData.insert(pair<double, double>(40000,	324));
-	return soundTableData;
 }
-map<double, double> mathFunctions::gravityTable() {
-	map<double, double> gravityTableData;
-											   //altitude, gravity
-	gravityTableData.insert(pair<double, double>(0,		9.807));
-	gravityTableData.insert(pair<double, double>(1000,	9.804));
-	gravityTableData.insert(pair<double, double>(2000,	9.801));
-	gravityTableData.insert(pair<double, double>(3000,	9.797));
-	gravityTableData.insert(pair<double, double>(4000,	9.794));
-	gravityTableData.insert(pair<double, double>(5000,	9.791));
-	gravityTableData.insert(pair<double, double>(6000,	9.788));
-	gravityTableData.insert(pair<double, double>(7000,	9.785));
-	gravityTableData.insert(pair<double, double>(8000,	9.782));
-	gravityTableData.insert(pair<double, double>(9000,	9.779));
-	gravityTableData.insert(pair<double, double>(10000,	9.776));
-	gravityTableData.insert(pair<double, double>(15000,	9.761));
-	gravityTableData.insert(pair<double, double>(20000,	9.745));
-	gravityTableData.insert(pair<double, double>(25000,	9.730));
-	return gravityTableData;
-}*/
+void mathFunctions::gravityTable() {
+	//altitude, gravity
+	gravityTableData.insert(pair<double, double>(0, 9.807));
+	gravityTableData.insert(pair<double, double>(1000, 9.804));
+	gravityTableData.insert(pair<double, double>(2000, 9.801));
+	gravityTableData.insert(pair<double, double>(3000, 9.797));
+	gravityTableData.insert(pair<double, double>(4000, 9.794));
+	gravityTableData.insert(pair<double, double>(5000, 9.791));
+	gravityTableData.insert(pair<double, double>(6000, 9.788));
+	gravityTableData.insert(pair<double, double>(7000, 9.785));
+	gravityTableData.insert(pair<double, double>(8000, 9.782));
+	gravityTableData.insert(pair<double, double>(9000, 9.779));
+	gravityTableData.insert(pair<double, double>(10000, 9.776));
+	gravityTableData.insert(pair<double, double>(15000, 9.761));
+	gravityTableData.insert(pair<double, double>(20000, 9.745));
+	gravityTableData.insert(pair<double, double>(25000, 9.730));
+}
